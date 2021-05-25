@@ -19,6 +19,11 @@ if [ $SPIN ]; then
     for pkg in colordiff silversearcher-ag python-pygments; do
         sudo apt-get install -y $pkg
     done
+
+    # diff-so-fancy is in my git config
+    git clone https://github.com/so-fancy/diff-so-fancy.git
+    sudo mv $PWD/diff-so-fancy/diff-so-fancy /usr/local/bin/
+    rm -rf diff-so-fancy
 fi
 
 echo
