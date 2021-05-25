@@ -13,19 +13,17 @@ fi
 # i like my path elements to come first, but not for libs.
 export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python:/usr/local/lib/python/site-packages:$HOME/bin/py
 export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7:/usr/local/lib/python2.7/site-packages
-if [ -f $HOME/Library/Python/2.7/lib/python/site-packages ]; then
+if [ -e $HOME/Library/Python/2.7/lib/python/site-packages ]; then
     export PYTHONPATH=$PYTHONPATH:$HOME/Library/Python/2.7/lib/python/site-packages
 fi
 
-if [ -f $HOME/Library/Python/2.7/bin ]; then
+if [ -e $HOME/Library/Python/2.7/bin ]; then
     PATH=$HOME/Library/Python/2.7/bin:$PATH
 fi
 
-if [ -f /Library/Frameworks/Python.framework/Versions/3.6/bin ]; then
+if [ -e /Library/Frameworks/Python.framework/Versions/3.6/bin ]; then
    PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
 fi
-
-PATH=$HOME/bin:$HOME/sh:$HOME/bin/py:$PATH
 
 BASH_ENV=$HOME/.bashrc
 USERNAME=""
@@ -42,12 +40,12 @@ export PYTHON_EGG_CACHE=$HOME/.python-eggs
 ######################################################################
 # ruby
 
-if [ -f $HOME/.rvm/bin ]; then
+if [ -e $HOME/.rvm/bin ]; then
     PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 fi
 
 for RUBY_VERSION in "2.7.0" "2.6.0"; do
-    if [ -f $HOME/.gem/ruby/$RUBY_VERSION/bin ]; then
+    if [ -e $HOME/.gem/ruby/$RUBY_VERSION/bin ]; then
         PATH=$PATH:$HOME/.gem/ruby/$RUBY_VERSION/bin # For `gem install --user-install` stuff
     fi
 done
@@ -131,10 +129,13 @@ complete -o default -F _pip_completion pip
 # export EC2_PRIVATE_KEY=~/.ssh/pk-GOQRORCJPKJPP2L7Z7HE6SUHKP2DZXIJ.pem
 
 # Other languages for PATH
-PATH=$PATH:$HOME/.gem/ruby/2.6.0/bin
-PATH=$PATH:$HOME/bin/ruby 
 
-PATH=$HOME/bin/perl:$PATH:/sbin:/usr/sbin
+for foo in $HOME/bin $HOME/bin/py $HOME/bin/perl $HOME/sh $HOME/bin/ruby; do
+    if [ -e $foo ]; then
+        PATH=$foo:$PATH
+    fi
+done
+
 
 export GOROOT=/usr/local/go
 PATH=$PATH:$GOROOT/bin
