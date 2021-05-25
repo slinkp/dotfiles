@@ -20,10 +20,24 @@ if [ $SPIN ]; then
         sudo apt-get install -y $pkg
     done
 
-    # diff-so-fancy is in my git config
+    mkdir -p sh
+    mkdir -p tmp
+
+    cd tmp
     git clone https://github.com/so-fancy/diff-so-fancy.git
-    sudo mv $PWD/diff-so-fancy/diff-so-fancy /usr/local/bin/
-    rm -rf diff-so-fancy
+    # XXX THIS DOES NOT WORK
+    sudo mv -f diff-so-fancy/diff-so-fancy /usr/local/bin/
+
+    # Shell stuff
+    git clone git@github.com:slinkp/sh.git
+    cp -f sh/* ../sh/
+
+    git clone git@github.com:slinkp/pw-git-scripts.git
+    cp -f pw-git-scripts/* ../sh/
+
+    # Cleanup
+    cd ..
+    rm -rf tmp
 fi
 
 echo
