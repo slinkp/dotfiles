@@ -24,5 +24,12 @@ fi
 echo
 echo "Byte compiling emacs"
 
+# First need to run to ensure use-package is installed
+emacs --script $DOTFILES/emacs_bootstrap.el
+
+# Byte compile files
+emacs --batch --eval '(byte-compile-file "~/.emacs")'
+# Compile everything hopefully?
 emacs --batch --eval '(byte-recompile-directory (expand-file-name "~/.emacs.d") 0)'
+# Redundant? Not sure
 emacs --batch --eval '(byte-compile-file "~/.emacs")'
