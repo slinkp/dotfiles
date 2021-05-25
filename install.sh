@@ -23,10 +23,11 @@ if [ $SPIN ]; then
     mkdir -p sh
     mkdir -p tmp
 
+    # diff-so-fancy needed by my git config
     cd tmp
     git clone https://github.com/so-fancy/diff-so-fancy.git
-    # XXX THIS DOES NOT WORK
     sudo mv -f diff-so-fancy/diff-so-fancy /usr/local/bin/
+    sudo cp -r diff-so-fancy/lib /usr/local/bin
 
     # Shell stuff
     git clone git@github.com:slinkp/sh.git
