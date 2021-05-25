@@ -11,6 +11,11 @@ ln -sf $DOTFILES/dotemacs/.emacs .
 ln -sf $DOTFILES/dotemacs/.emacs.d .
 
 if [ $SPIN ]; then
+
+    # Default shell
+    sudo chsh -s /bin/bash spin
+
+    # Extra packages
     for pkg in colordiff silversearcher-ag python-pygments; do
         sudo apt-get install -y $pkg
     done
