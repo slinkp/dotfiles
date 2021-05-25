@@ -30,10 +30,10 @@ if [ $SPIN ]; then
     sudo cp -r diff-so-fancy/lib /usr/local/bin
 
     # Shell stuff
-    git clone git@github.com:slinkp/sh.git
+    git clone https://github.com/slinkp/sh.git
     cp -f sh/* ../sh/
 
-    git clone git@github.com:slinkp/pw-git-scripts.git
+    git clone https://github.com/slinkp/pw-git-scripts.git
     cp -f pw-git-scripts/* ../sh/
 
     # Cleanup
