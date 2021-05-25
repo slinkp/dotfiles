@@ -24,5 +24,5 @@ fi
 echo
 echo "Byte compiling emacs"
 
-emacs --batch --eval '(byte-compile-directory "~/.emacs.d")'
+emacs --batch --eval '(byte-recompile-directory (expand-file-name "~/.emacs.d") 0)'
 emacs --batch --eval '(byte-compile-file "~/.emacs")'
