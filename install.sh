@@ -45,7 +45,7 @@ echo
 echo "Byte compiling emacs"
 
 # First need to run to ensure use-package is installed
-emacs --script $DOTFILES/emacs_bootstrap.el
+yes | emacs --script $DOTFILES/emacs_bootstrap.el
 
 # Byte compile files
 emacs --batch --eval '(byte-compile-file "~/.emacs")'
