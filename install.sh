@@ -52,8 +52,8 @@ echo "Byte compiling emacs"
 yes | emacs --script $DOTFILES/emacs_bootstrap.el
 
 # Byte compile files
-emacs --batch --eval '(byte-compile-file "~/.emacs")'
+emacs --batch --eval '(byte-compile-file (expand-file-name "~/.emacs"))'
 # Compile everything hopefully?
 emacs --batch --eval '(byte-recompile-directory (expand-file-name "~/.emacs.d") 0)'
 # Redundant? Not sure
-emacs --batch --eval '(byte-compile-file "~/.emacs")'
+emacs --batch --eval '(byte-compile-file (expand-file-name "~/.emacs"))'
