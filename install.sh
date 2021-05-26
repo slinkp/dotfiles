@@ -2,6 +2,7 @@
 
 
 DOTFILES=`(cd "${0%/*}" 2>/dev/null; echo "$PWD"/)`
+SRCDIR=$HOME/src/github.com/shopify/shopify
 
 cd $HOME
 
@@ -43,7 +44,9 @@ if [ $SPIN ]; then
 
     echo "Tags support for emacs..."
     gem install ripper-tags
+    cd $SRCDIR
     ripper-tags -f TAGS -R -e components/ gems/ lib/ eagerlib/
+    cd -
 
     echo
     echo "Bootstrapping emacs packages"
