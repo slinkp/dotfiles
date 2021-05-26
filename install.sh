@@ -37,8 +37,12 @@ if [ $SPIN ]; then
     cp -f pw-git-scripts/* ../sh/
 
     # Cleanup
-    cd ..
+    cd $HOME
     rm -rf tmp
+
+    # Tags for emacs
+    gem install ripper-tags
+    ripper-tags -f TAGS -R -e components/ gems/ lib/ eagerlib/
 fi
 
 echo
