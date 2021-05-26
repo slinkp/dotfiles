@@ -1,7 +1,8 @@
 #!/bin/sh
 
 
-DOTFILES=$PWD
+DOTFILES=`(cd "${0%/*}" 2>/dev/null; echo "$PWD"/)`
+
 cd $HOME
 
 ln -sf $DOTFILES/bash_profile .bash_profile
