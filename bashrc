@@ -79,3 +79,10 @@ alias dcomp="docker-compose"
 if [[ -f /opt/dev/dev.sh ]] && [[ $- == *i* ]]; then
   source /opt/dev/dev.sh
 fi
+
+# SHOPIFY SPIN
+
+if [ $SPIN ]; then
+  alias mysql-spin="mysql -u root -h 127.0.0.1 -D shopify_dev_shard_0"
+fi
+
