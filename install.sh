@@ -17,6 +17,9 @@ if [ $SPIN ]; then
     echo "Setting default shell to bash..."
     sudo chsh -s /bin/bash spin
 
+    echo "Fixing git config..."
+    git config --global --unset-all credential.helper
+
     echo "Installing extra packages..."
     for pkg in colordiff silversearcher-ag python-pygments; do
         sudo apt-get install -y $pkg
