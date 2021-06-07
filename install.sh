@@ -9,6 +9,9 @@ cd $HOME
 ln -sf $DOTFILES/bash_profile .bash_profile
 ln -sf $DOTFILES/bashrc .bashrc
 ln -sf $DOTFILES/gitconfig .gitconfig
+ln -sf $DOTFILES/bash_github .bash_github
+ln -sf $DOTFILES/github-completion.bash .git-completion.bash
+
 ln -sf $DOTFILES/dotemacs/.emacs .
 ln -sf $DOTFILES/dotemacs/.emacs.d .
 
