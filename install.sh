@@ -48,6 +48,9 @@ if [ $SPIN ]; then
     cd $HOME
     rm -rf tmp
 
+    echo "Installing log_sql.rb..."
+    cp -f $DOTFILES/log_sql.rb $SRCDIR/log_sql.rb
+
     echo "Tags support for emacs..."
     gem install ripper-tags
     cd $SRCDIR
