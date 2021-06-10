@@ -15,7 +15,7 @@ ln -sf $DOTFILES/github-completion.bash .git-completion.bash
 ln -sf $DOTFILES/dotemacs/.emacs .
 ln -sf $DOTFILES/dotemacs/.emacs.d .
 
-if [ $SPIN ]; then
+if [ -n "$SPIN" ]; then
 
     echo "Setting default shell to bash..."
     sudo chsh -s /bin/bash spin

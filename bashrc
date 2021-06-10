@@ -82,7 +82,9 @@ fi
 
 # SHOPIFY SPIN
 
-if [ $SPIN ]; then
+if [ -n "$SPIN" ]; then
   alias mysql-spin="mysql -u root -h 127.0.0.1 -D shopify_dev_shard_0"
+elif [ -n "$IS_OSX" ]; then
+  source <(spin completion bash) 2>/dev/null
 fi
 

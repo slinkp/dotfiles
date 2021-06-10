@@ -200,7 +200,7 @@ if [ -e /Users/paul/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/paul/.nix
 ######################################################################
 ## SHOPIFY
 
-if [ $SPIN ]; then
+if [ -n "$SPIN" ]; then
    export CORE=~/src/github.com/shopify/shopify
    cd $CORE
 fi
