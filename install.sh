@@ -2,7 +2,6 @@
 
 
 DOTFILES=`(cd "${0%/*}" 2>/dev/null; echo "$PWD"/)`
-SRCDIR=$HOME/src/github.com/shopify/shopify
 
 cd $HOME
 
@@ -17,8 +16,11 @@ ln -sf $DOTFILES/dotemacs/.emacs.d .
 
 if [ -n "$SPIN" ]; then
 
+    export SRCDIR=$HOME/src/github.com/shopify/shopify
+
     echo "Setting default shell to bash..."
     sudo chsh -s /bin/bash spin
+
 
     echo "Fixing git config..."
     git config --global --unset-all credential.helper
@@ -64,7 +66,7 @@ if [ -n "$SPIN" ]; then
 fi
 
 echo "Byte compiling elisp files"
-
+cd ~
 emacs --batch --eval '(byte-compile-file (expand-file-name "~/.emacs"))'
 emacs --batch --eval '(byte-recompile-directory (expand-file-name "~/.emacs.d") 0)'
 # Not working, refresh harder! argh
