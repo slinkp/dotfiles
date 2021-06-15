@@ -1,0 +1,41 @@
+# -*- coding: utf-8;  mode: python -*-
+
+import atexit
+import os
+
+# Make TAB complete stuff, if readline is available
+try:
+    import rlcompleter
+    import readline
+except ImportError:
+    readline = rlcompleter = None
+
+if readline:
+    historyPath = os.path.expanduser("~/.pyhistory")
+    # Completion for both linux and osx
+    if 'libedit' in readline.__doc__:
+        readline.parse_and_bind("bind ^I rl_complete")
+    else:
+        readline.parse_and_bind("tab: complete")
+
+    # Save our interpreter history between sessions
+
+    def save_history(historyPath=historyPath):
+        import readline
+        readline.write_history_file(historyPath)
+
+    if os.path.exists(historyPath):
+        readline.read_history_file(historyPath)
+
+    atexit.register(save_history)
+    # cleanup
+    del readline, rlcompleter, save_history, historyPath
+
+# more cleanup
+del atexit, os
+
+# things I always want
+from pydoc import help  # noqa
+from pprint import pprint  # noqa
+
+i18n_sample = u'uʍop əpısdn ɯɐ ı dləɥ'

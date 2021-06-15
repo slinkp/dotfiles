@@ -14,6 +14,8 @@ ln -sf $DOTFILES/github-completion.bash .git-completion.bash
 ln -sf $DOTFILES/dotemacs/.emacs .
 ln -sf $DOTFILES/dotemacs/.emacs.d .
 
+ln -sf $DOTFILES/pythonrc .pythonrc
+
 if [ -n "$SPIN" ]; then
 
     export SRCDIR=$HOME/src/github.com/shopify/shopify
