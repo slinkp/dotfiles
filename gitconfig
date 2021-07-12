@@ -53,6 +53,7 @@
 	br = branch
 	jira-co = "!f() { b=$1; shift; { git branch && git branch -r ; } | awk -v rpat=^[^/]*/$b -v pat=^$b '$1 ~ pat || $1 ~ rpat { print ; exit ; }' | cut -d/ -f2 | xargs -I{} git co {} $@; }; f"
     cane = commit --amend --no-edit
+	path = ls-files --full-name
 
 [core]
     excludesfile = ~/.gitignore
