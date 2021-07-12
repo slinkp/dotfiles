@@ -895,6 +895,14 @@ XXX argument untested"
 (use-package dumb-jump)
 ;; (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
 
+;; wgrep allows editing & search/replace directly in grep results and then saving
+(require 'wgrep)
+
+;; Better defaults for file opening, eg C-x C-f defaults to file or URL at point.
+;; https://www.gnu.org/software/emacs/manual/html_node/emacs/FFAP.html
+(ffap-bindings)
+
+
 ;; Flycheck
 
 (use-package flycheck)
@@ -1044,6 +1052,7 @@ XXX argument untested"
 (add-to-list 'exec-path (expand-file-name "~/bin"))
 (add-to-list 'exec-path (expand-file-name "~/bin/py"))
 (add-to-list 'exec-path (expand-file-name "~/sh"))
+(add-to-list 'exec-path "/nix/var/nix/gcroots/dev-profiles/user-extra-profile/bin/")
 (setenv "PATH" (mapconcat 'identity exec-path path-separator))
 
 ;; ========================================================================
