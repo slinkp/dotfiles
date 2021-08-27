@@ -201,6 +201,9 @@ if [ -e /Users/paul/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/paul/.nix
 ## SHOPIFY
 
 if [ -n "$SPIN" ]; then
+   if [ -f ~/.bash_login ]; then
+     # Shopify dev environment adds crap we need to this file
+     . ~/.bash_login
+   fi
    export CORE=~/src/github.com/shopify/shopify
-   cd $CORE
 fi
