@@ -106,8 +106,8 @@ fi
 # Gentoo has this already, but not Ubuntu.
 export LESS="-R -M"
 
-# Gnome does this automatically, but Roxterm doesn't seem to.
-export SSH_ASKPASS=/usr/bin/ssh-askpass
+# Gnome does this automatically, but Roxterm doesn't seem to. Broken on Shopify spin?
+# export SSH_ASKPASS=/usr/bin/ssh-askpass
 
 # Don't download so darn much
 export PIP_DOWNLOAD_CACHE=$HOME/tmp/pip-download-cache
