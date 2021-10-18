@@ -153,17 +153,6 @@ test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shel
 
 
 ######################################################################
-# PROMPT
-
-# Add git branch info to PS1.
-if [ -f ~/.bash_github ]; then
-    . ~/.bash_github
-fi
-
-# I like to shove the time in there.
-export PS1="[\t]\n$PS1"
-
-######################################################################
 # HISTORY
 # 500 is way too low
 export HISTSIZE=3000
@@ -207,3 +196,19 @@ if [ -n "$SPIN" ]; then
    fi
    export CORE=~/src/github.com/shopify/shopify
 fi
+
+######################################################################
+# PROMPT
+
+# Add git branch info to PS1.
+if [ -f ~/.bash_github ]; then
+    . ~/.bash_github
+fi
+
+if [ -n "$SPIN" ]; then
+   # Spin symbol
+   PS1="꩜ $PS1"
+fi
+
+# I like to shove the time in there on its own line before prompt.
+export PS1="[\t]\n$PS1"
