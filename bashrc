@@ -93,3 +93,4 @@ elif [ -n "$IS_OSX" ]; then
 fi
 
 
+[[ -x /usr/local/bin/brew ]] && eval $(/usr/local/bin/brew shellenv)

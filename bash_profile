@@ -25,10 +25,14 @@ if [ -e /Library/Frameworks/Python.framework/Versions/3.6/bin ]; then
    PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
 fi
 
-BASH_ENV=$HOME/.bashrc
+## Unsetting this as it caused basic commands to hang
+## when combined with shellcheck stuff added to .bashrc by dev
+# BASH_ENV=$HOME/.bashrc
+# export BASH_ENV
+
 USERNAME=""
 
-export USERNAME BASH_ENV ENV PATH
+export USERNAME ENV PATH
 
 # turn on tab completion in interactive python
 export PYTHONSTARTUP=~/.pythonrc
