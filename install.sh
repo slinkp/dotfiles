@@ -56,7 +56,7 @@ if [ -n "$SPIN" ]; then
     echo "Tags support for emacs..."
     gem install ripper-tags
     cd $SRCDIR
-    ripper-tags -f TAGS -R -e components/ gems/ lib/ eagerlib/
+    ripper-tags -f TAGS -R -e components/ gems/ lib/
     cd -
 
     echo
