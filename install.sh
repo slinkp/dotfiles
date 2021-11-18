@@ -18,8 +18,20 @@ ln -sf $DOTFILES/dotemacs/.emacs.d .
 ln -sf $DOTFILES/pythonrc .pythonrc
 
 if [ -n "$SPIN" ]; then
+    if [ -n "$SPIN_WORKSPACE" ]; then
+        export SPIN_CLASSIC=1
+    fi
 
-    export SRCDIR=$HOME/src/github.com/shopify/shopify
+    # This doesn't seem to work with bin/rails db :(
+    cat >> ~/.my.cnf <<EOF
+[client]
+
+database=shopify_dev_shard_0
+EOF
+
+
+    # Works on both classic and isospin
+    export SRCDIR=$SPIN_REPO_SOURCE_PATH
 
     echo "Setting default shell to bash..."
     sudo chsh -s /bin/bash spin
@@ -29,10 +41,13 @@ if [ -n "$SPIN" ]; then
     git config --global --unset-all credential.helper
 
     echo "Installing extra packages..."
-    for pkg in colordiff silversearcher-ag ripgrep python-pygments tree rsync psmisc; do
+    for pkg in colordiff silversearcher-ag ripgrep python-pygments tree rsync \
+               psmisc lsof strace gdb \
+               python3-matplotlib python3-pip python3-virtualenv ; do
         sudo apt-get install -y $pkg
     done
 
+    cd ~
     mkdir -p sh
     mkdir -p tmp
 
@@ -53,16 +68,17 @@ if [ -n "$SPIN" ]; then
     cd $HOME
     rm -rf tmp
 
+    echo
+    echo "Bootstrapping emacs packages"
+    yes | emacs --script $DOTFILES/emacs_bootstrap.el
+    echo
+    # May also need to do `M-x jedi:install-server` if still jedi problems?
+
     echo "Tags support for emacs..."
     gem install ripper-tags
     cd $SRCDIR
     ripper-tags -f TAGS -R -e components/ gems/ lib/
     cd -
-
-    echo
-    echo "Bootstrapping emacs packages"
-    yes | emacs --script $DOTFILES/emacs_bootstrap.el
-    echo
 fi
 
 echo "Byte compiling elisp files"
