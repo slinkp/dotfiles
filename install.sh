@@ -17,7 +17,10 @@ ln -sf $DOTFILES/dotemacs/.emacs.d .
 
 ln -sf $DOTFILES/pythonrc .pythonrc
 
+# Some mac customizations: keyboard window management
 ln -sf $DOTFILES/hammerspoon .hammerspoon
+ln -sf $DOTFILES/slate.js .slate.js
+ln -sf $DOTFILES/slate .slate
 
 if [ -n "$SPIN" ]; then
     if [ -n "$SPIN_WORKSPACE" ]; then
