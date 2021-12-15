@@ -17,6 +17,8 @@ ln -sf $DOTFILES/dotemacs/.emacs.d .
 
 ln -sf $DOTFILES/pythonrc .pythonrc
 
+ln -sf $DOTFILES/hammerspoon .hammerspoon
+
 if [ -n "$SPIN" ]; then
     if [ -n "$SPIN_WORKSPACE" ]; then
         export SPIN_CLASSIC=1
