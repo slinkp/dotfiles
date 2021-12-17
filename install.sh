@@ -15,9 +15,12 @@ ln -sf $DOTFILES/gitignore .gitignore
 ln -sf $DOTFILES/dotemacs/.emacs .
 ln -sf $DOTFILES/dotemacs/.emacs.d .
 
+ln -sf $DOTFILES/vimrc .vimrc
+
 ln -sf $DOTFILES/pythonrc .pythonrc
 
 # Some mac customizations: keyboard window management
+mv .hammerspoon .hammerspoon-OLD 2> /dev/null
 ln -sf $DOTFILES/hammerspoon .hammerspoon
 ln -sf $DOTFILES/slate.js .slate.js
 ln -sf $DOTFILES/slate .slate
