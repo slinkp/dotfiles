@@ -1,3 +1,5 @@
+local grid = require "hs.grid"
+
 -- hs.hotkey.bind({"cmd", "alt", "ctrl"}, "W", function()
 --       hs.notify.new({title="Hammerspoon", informativeText="Hello Notification World!"}):send()
 -- end)
@@ -96,7 +98,7 @@ end)
 ----------------------------------------------------------------------
 nudgeX = 30
 nudgeY = 24
-
+-- TODO how to move by that amount
 
 ----------------------------------------------------------------------
 -- emacs-everywhere per 
@@ -108,3 +110,46 @@ hs.hotkey.bindSpec({hyper, "e"},
     hs.task.new("/bin/bash", nil, { "-l", "-c", "emacsclient --eval '(emacs-everywhere)'" }):start()
   end
 )
+
+
+------------------------------------------------------------
+-- Vertical maximize
+------------------------------------------------------------
+
+hs.hotkey.bind({"cmd", "ctrl"}, "Up", function()
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+
+  f.y = max.y
+  f.h = max.h
+  win:setFrame(f)
+end)
+
+
+--------------------------------------------
+-- Grid movement?
+----------------------------------------------
+
+hs.grid.setGrid("8x5")
+
+hs.hotkey.bind({"cmd", "ctrl", "shift"}, "Up", function()
+  local win = hs.window.focusedWindow()
+  hs.grid.pushWindowUp(win)
+end)
+
+hs.hotkey.bind({"cmd", "ctrl", "shift"}, "Down", function()
+  local win = hs.window.focusedWindow()
+  hs.grid.pushWindowDown(win)
+end)
+
+hs.hotkey.bind({"cmd", "ctrl", "shift"}, "Right", function()
+  local win = hs.window.focusedWindow()
+  hs.grid.pushWindowRight(win)
+end)
+
+hs.hotkey.bind({"cmd", "ctrl", "shift"}, "Left", function()
+  local win = hs.window.focusedWindow()
+  hs.grid.pushWindowLeft(win)
+end)

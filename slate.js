@@ -10,8 +10,8 @@ S.cfga({
 
 // Nudge operations.
 
-var nudgeX = 30;
-var nudgeY = 24;
+// var nudgeX = 30;
+// var nudgeY = 24;
 
 /*
 slate.bind("left:alt,shift", function(win) {

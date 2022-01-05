@@ -12,11 +12,11 @@ config resizePercentOf screenSize
 # bind up:alt          resize +0   -5%
 # bind down:alt        resize +0   +5%
 
-# TO MOVE TO HAMMERSPOON
-bind right:ctrl;alt  resize -5% +0 bottom-right
-bind left:ctrl;alt   resize +5% +0 bottom-right
-bind up:ctrl;alt     resize +0   +5% bottom-right
-bind down:ctrl;alt   resize +0   -5% bottom-right
+# TO MOVE TO HAMMERSPOON ... meh, never used
+#bind right:ctrl;alt  resize -5% +0 bottom-right
+#bind left:ctrl;alt   resize +5% +0 bottom-right
+#bind up:ctrl;alt     resize +0   +5% bottom-right
+#bind down:ctrl;alt   resize +0   -5% bottom-right
 
 # Push Bindings (move to edge and maximize along that edge)
 #bind right:ctrl;cmd  push right bar-resize:screenSizeX/3
@@ -24,9 +24,10 @@ bind down:ctrl;alt   resize +0   -5% bottom-right
 #bind up:ctrl;cmd     push up    bar-resize:screenSizeY/2
 #bind down:ctrl;cmd   push down  bar-resize:screenSizeY/2
 
+## MOVED TO HAMMERSPOON
 # Maximize vertically
-bind up:ctrl;cmd      move windowTopLeftX;screenOriginY windowSizeX;screenSizeY
-bind pageUp:ctrl;cmd  move windowTopLeftX;screenOriginY windowSizeX;screenSizeY
+# bind up:ctrl;cmd      move windowTopLeftX;screenOriginY windowSizeX;screenSizeY
+# bind pageUp:ctrl;cmd  move windowTopLeftX;screenOriginY windowSizeX;screenSizeY
 
 # Nudge Bindings (move window) 
 # bind right:shift;alt nudge +1% +0
@@ -53,8 +54,8 @@ bind pageUp:ctrl;cmd  move windowTopLeftX;screenOriginY windowSizeX;screenSizeY
 # bind down:cmd;alt focus behind
 
 # Window Hints (for choosing focus by letter)
-bind esc:cmd hint
+#bind esc:cmd hint
 
 # Divvy-style grid
 
-bind g:cmd;shift  grid padding:5 0:12,6 1:8,6
+#bind g:cmd;shift  grid padding:5 0:12,6 1:8,6
