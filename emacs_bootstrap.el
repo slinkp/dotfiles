@@ -79,3 +79,7 @@
 (straight-use-package 'ctable)
 (straight-use-package 'auto-complete)
 (straight-use-package 'wgrep)
+(straight-use-package 'rainbow-delimiters)
+(straight-use-package 'undo-tree)
+(straight-use-package 'lua-mode)
+
