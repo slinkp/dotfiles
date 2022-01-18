@@ -102,11 +102,12 @@
 (straight-use-package 'rainbow-delimiters)
 (straight-use-package 'undo-tree)
 (straight-use-package 'lua-mode)
+(straight-use-package 'graphql-mode)
 
-(eval-when-compile
-  ;; Following line is not needed if use-package.el is in ~/.emacs.d
-  ;; (add-to-list 'load-path "<path where use-package is installed>")
-  (require 'use-package))
+;; (eval-when-compile
+;;   ;; Following line is not needed if use-package.el is in ~/.emacs.d
+;;   ;; (add-to-list 'load-path "<path where use-package is installed>")
+;;   (require 'use-package))
 
 
 
@@ -451,10 +452,8 @@ XXX argument untested"
    '("%e" mode-line-front-space mode-line-mule-info mode-line-client mode-line-modified mode-line-remote mode-line-frame-identification mode-line-buffer-identification mode-line-position mode-line-misc-info mode-line-modes
      (vc-mode vc-mode)
      mode-line-end-spaces))
- ;; '(package-selected-packages
- ;;   '(rg projectile-ripgrep helm-rg yaml-mode aggressive-indent helm-flycheck multi-web-mode git-link fill-column-indicator diminish sphinx-doc highlight-indentation flycheck s use-package pyvenv python-mode php-mode multiple-cursors markdown-preview-mode magit js2-mode jedi-core helm-projectile go-mode find-file-in-repository exec-path-from-shell dumb-jump ctable auto-complete))
  '(protect-buffer-bury-p nil)
- '(py-load-pymacs-p nil)
+ '(py-load-pymacs-p nil t)
  '(py-pdbtrack-do-tracking-p t)
  '(safe-local-variable-values
    '((test-case-name . buildbot\.test\.test_transfer)
@@ -465,7 +464,8 @@ XXX argument untested"
  '(show-paren-mode t nil (paren))
  '(show-trailing-whitespace t)
  '(tramp-default-method "ssh")
- '(undo-outer-limit 24000000))
+ '(undo-outer-limit 24000000)
+ '(warning-suppress-types '((comp))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -489,8 +489,6 @@ XXX argument untested"
 ;; ========================================================================
 ;; MODES
 ;; ========================================================================
-
-;; (require 'flycheck)
 
 ;; turn on SYNTAX HIGHLIGHTING for language modes
 
@@ -585,8 +583,6 @@ XXX argument untested"
 (add-to-list 'auto-mode-alist '("\\.vpy$" . python-mode))
 (add-to-list 'auto-mode-alist '("\\.cpy$" . python-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
-
-;; No more flymake? I'm using flycheck and flycheck-flake8
 
 (add-hook 'python-mode-hook
   (lambda ()
