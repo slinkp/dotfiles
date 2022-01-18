@@ -35,6 +35,8 @@ if [ -n "$SPIN" ]; then
 [client]
 
 database=shopify_dev_shard_0
+socket=/var/run/mysqld-shopify--shopify/mysqld.sock
+user=root
 EOF
 
 
