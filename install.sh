@@ -53,7 +53,7 @@ EOF
     echo "Installing extra packages..."
     for pkg in colordiff silversearcher-ag ripgrep python-pygments tree rsync \
                psmisc lsof strace gdb \
-               python3-matplotlib python3-pip python3-virtualenv ; do
+               python3-matplotlib python3-pip python3-virtualenv ncal ; do
         sudo apt-get install -y $pkg
     done
 
