@@ -25,11 +25,12 @@
 	ui = true
 
 [alias]
-        all = for-each-ref --format='%(refname:short) <- %(upstream:short)' refs/heads
-        tree = log --graph --decorate --pretty=oneline --abbrev-commit
-        up = fetch --all --prune
+    all = for-each-ref --format='%(refname:short) <- %(upstream:short)' refs/heads
+    tree = log --graph --decorate --pretty=oneline --abbrev-commit
+    up = fetch --all --prune
     master = !bash -c 'echo "stashing any changes before hard reset..." && git stash save && git fetch --all --prune && git checkout master && git reset --hard origin/master'
-	st = status
+    main = !bash -c 'echo "stashing any changes before hard reset..." && git stash save && git fetch --all --prune && git checkout main && git reset --hard origin/main'
+    st = status
 	br = branch
 	ci = commit
 	co = checkout
