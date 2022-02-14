@@ -85,9 +85,8 @@ fi
 # SHOPIFY SPIN
 
 if [ -n "$SPIN" ]; then
-  alias mysql-spin="mysql -u root -h 127.0.0.1 -D shopify_dev_shard_0"
   # Spin provides "help" command, but so does Bash.
-  alias spin-help="/usr/local/bin/help"
+  alias spin-help="man spin"
 elif [ -n "$IS_OSX" ]; then
   source <(spin completion bash) 2>/dev/null
 fi
