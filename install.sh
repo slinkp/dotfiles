@@ -75,8 +75,8 @@ if [ -n "$SPIN" ]; then
     # May also need to do `M-x jedi:install-server` if still jedi problems?
 
     echo "Tags support for emacs..."
-    gem install ripper-tags
     cd $SRCDIR
+    gem install ripper-tags
     ripper-tags -f TAGS -R -e components/ gems/ lib/
     cd -
 fi
