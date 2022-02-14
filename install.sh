@@ -30,16 +30,6 @@ if [ -n "$SPIN" ]; then
         export SPIN_CLASSIC=1
     fi
 
-    # This doesn't seem to work with bin/rails db :(
-    cat >> ~/.my.cnf <<EOF
-[client]
-
-database=shopify_dev_shard_0
-socket=/var/run/mysqld-shopify--shopify/mysqld.sock
-user=root
-EOF
-
-
     # Works on both classic and isospin
     export SRCDIR=$SPIN_REPO_SOURCE_PATH
 
