@@ -6,3 +6,4 @@
 *.sw[a-p]
 tmp/*
 *.elc
+dotemacs/.emacs.d/eln-cache/
