@@ -8,6 +8,9 @@ cd $HOME
 ln -sf $DOTFILES/bash_profile .bash_profile
 ln -sf $DOTFILES/bashrc .bashrc
 ln -sf $DOTFILES/gitconfig .gitconfig
+mkdir -p .config/dev
+ln -sf $DOTFILES/shopify_gitconfig .config/dev/gitconfig
+ln -sf $DOTFILES/gitconfig .gitconfig
 ln -sf $DOTFILES/bash_github .bash_github
 ln -sf $DOTFILES/git-completion.bash .git-completion.bash
 ln -sf $DOTFILES/gitignore .gitignore

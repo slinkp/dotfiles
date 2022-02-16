@@ -1,10 +1,5 @@
 [diff]
-	algorithm = patience
 	color = auto
-
-[protocol]
-	version = 2
-
 [user]
 	name = Paul Winkler
 	email = paul.winkler@shopify.com
@@ -67,15 +62,6 @@
 	logallrefupdates = true
 	ignorecase = true
 	precomposeunicode = true
-	commitGraph = true
-
-[url "https://github.com/Shopify/"]
-	insteadOf = git@github.com:Shopify/
-	insteadOf = git@github.com:shopify/
-	insteadOf = ssh://git@github.com/Shopify/
-	insteadOf = ssh://git@github.com/shopify/
-
-
 [help]
 	autocorrect = 1
 
@@ -85,12 +71,7 @@
 [pager]
 	diff = diff-so-fancy | less --tabs=1,5 -RFX
 	show = diff-so-fancy | less --tabs=1,5 -RFX
-
-[gc]
-	writeCommitGraph = true
-
-[credential]
-	helper = 
-	helper = store --file /opt/dev/var/private/git_credential_store
 [init]
 	defaultBranch = main
+[include]
+	path = /Users/paul/.config/dev/gitconfig
