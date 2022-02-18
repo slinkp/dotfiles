@@ -169,6 +169,10 @@ PROMPT_COMMAND='history -a'
 # You probably want to set your history to append instead of overwrite too
 shopt -s histappend
 
+
+# Timestamps!
+export HISTTIMEFORMAT="%F %T>"
+
 #######################################################################
 # PATH finalization
 
