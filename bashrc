@@ -1,3 +1,4 @@
+# -*- mode: shell-script -*-
 # .bashrc
 
 # User specific aliases and functions
