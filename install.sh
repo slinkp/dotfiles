@@ -55,7 +55,21 @@ ln -sf $DOTFILES/hammerspoon .hammerspoon
 ln -sf $DOTFILES/slate.js .slate.js
 ln -sf $DOTFILES/slate .slate
 
+if [ -n "$MACOS_SW_VERSION" ]; then
+    echo "Installing macos packages..."
+    brew install colordiff the_silver_seacher ripgrep tree \
+         pyenv diff-so-fancy pygments mplayer mp3info \
+         gh
+
+    # Emacs for m1
+    brew tap d12frosted/emacs-plus
+    brew install emacs-plus@28 --with-native-comp --with-modern-papirus-icon
+
+    echo "Done with Mac setup"
+fi
+
 if [ -n "$SPIN" ]; then
+    echo "Installing spin-specific things..."
     if [ -n "$SPIN_WORKSPACE" ]; then
         export SPIN_CLASSIC=1
     fi
@@ -97,6 +111,7 @@ if [ -n "$SPIN" ]; then
     gem install ripper-tags
     ripper-tags -f TAGS -R -e components/ gems/ lib/
     cd -
+    echo "Done with Spin setup"
 fi
 
 echo "Byte compiling elisp files"
