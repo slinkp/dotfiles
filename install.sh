@@ -5,6 +5,33 @@ DOTFILES=`(cd "${0%/*}" 2>/dev/null; echo "$PWD")`
 
 cd $HOME
 
+
+echo "Installing shell scripts..."
+mkdir -p ~/src
+mkdir -p ~/sh
+cd ~/src
+if [ -d "sh" ]; then
+    cd sh
+    git fetch --all --prune
+    cd -
+else
+    git clone https://github.com/slinkp/sh.git
+fi
+ln -sf sh/* ~/sh/
+
+echo "Installing git scripts..."
+if [ -d "pw-git-scripts" ]; then
+    cd pw-git-scripts
+    git fetch --all --prune
+    cd -
+else
+    git clone https://github.com/slinkp/pw-git-scripts.git
+fi
+ln -sf pw-git-scripts/* ~/sh/
+cd $HOME
+
+echo "Linking dotfiles..."
+cd $HOME
 ln -sf $DOTFILES/bash_profile .bash_profile
 ln -sf $DOTFILES/bashrc .bashrc
 ln -sf $DOTFILES/gitconfig .gitconfig
@@ -49,27 +76,15 @@ if [ -n "$SPIN" ]; then
                python3-matplotlib python3-pip python3-virtualenv ncal ; do
         sudo apt-get install -y $pkg
     done
-
     cd ~
-    mkdir -p sh
-    mkdir -p tmp
 
     echo "Installing diff-so-fancy for my git config..."
-    cd tmp
+    cd ~/src
     git clone https://github.com/so-fancy/diff-so-fancy.git
     sudo mv -f diff-so-fancy/diff-so-fancy /usr/local/bin/
     sudo cp -r diff-so-fancy/lib /usr/local/bin
-
-    echo "Installing shell scripts..."
-    git clone https://github.com/slinkp/sh.git
-    cp -f sh/* ../sh/
-
-    git clone https://github.com/slinkp/pw-git-scripts.git
-    cp -f pw-git-scripts/* ../sh/
-
-    echo "Cleanup..."
-    cd $HOME
-    rm -rf tmp
+    cd -
+    rm -rf diff-so-fancy
 
     echo
     echo "Bootstrapping emacs packages"
