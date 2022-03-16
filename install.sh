@@ -87,7 +87,8 @@ if [ -n "$SPIN" ]; then
     echo "Installing extra packages..."
     for pkg in colordiff silversearcher-ag ripgrep python-pygments tree rsync \
                psmisc lsof strace gdb \
-               python3-matplotlib python3-pip python3-virtualenv ncal ; do
+               python3-matplotlib python3-pip python3-virtualenv ncal \
+               gh; do
         sudo apt-get install -y $pkg
     done
     cd ~
@@ -114,6 +115,11 @@ if [ -n "$SPIN" ]; then
     echo "Done with Spin setup"
 fi
 
+echo "Common things that depend on native installations above ..."
+gh extension install Shopify/gh-draft-order-pr
+
+
+echo "Emacs setup - broken :("
 echo "Byte compiling elisp files"
 cd ~
 emacs --batch --eval '(byte-compile-file (expand-file-name "~/.emacs"))'
