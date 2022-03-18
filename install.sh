@@ -17,7 +17,7 @@ if [ -d "sh" ]; then
 else
     git clone https://github.com/slinkp/sh.git
 fi
-ln -sf sh/* ~/sh/
+ln -sf $PWD/sh/* ~/sh/
 
 echo "Installing git scripts..."
 if [ -d "pw-git-scripts" ]; then
@@ -27,7 +27,7 @@ if [ -d "pw-git-scripts" ]; then
 else
     git clone https://github.com/slinkp/pw-git-scripts.git
 fi
-ln -sf pw-git-scripts/* ~/sh/
+ln -sf $PWD/pw-git-scripts/* ~/sh/
 cd $HOME
 
 echo "Linking dotfiles..."
