@@ -91,6 +91,11 @@ if [ -n "$SPIN" ]; then
                gh; do
         sudo apt-get install -y $pkg
     done
+
+    echo "Installing git-delta for my git config..."
+    # Sadly not available for apt-get
+    curl -L https://github.com/dandavison/delta/releases/download/0.12.1/git-delta_0.12.1_amd64.deb > git-delta.deb && \
+        sudo dpkg -i git-delta.deb
     cd ~
 
     echo "Installing diff-so-fancy for my git config..."

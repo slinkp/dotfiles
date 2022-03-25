@@ -1,5 +1,8 @@
+
 [diff]
-	color = auto
+    color = auto
+    colorMoved = default
+
 [user]
 	name = Paul Winkler
 	email = paul.winkler@shopify.com
@@ -62,16 +65,34 @@
 	logallrefupdates = true
 	ignorecase = true
 	precomposeunicode = true
+
+    pager = delta
+
 [help]
 	autocorrect = 1
 
 [status]
 	submoduleSummary = true
 
-[pager]
-	diff = diff-so-fancy | less --tabs=1,5 -RFX
-	show = diff-so-fancy | less --tabs=1,5 -RFX
 [init]
 	defaultBranch = main
+
 [include]
 	path = /Users/paul/.config/dev/gitconfig
+
+
+## Obsoleted by git-delta
+# [pager]
+# 	diff = diff-so-fancy | less --tabs=1,5 -RFX
+# 	show = diff-so-fancy | less --tabs=1,5 -RFX
+
+# git-delta config
+
+[merge]
+    conflictstyle = diff3
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true  # use n and N to move between diff sections
