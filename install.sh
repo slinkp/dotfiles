@@ -74,8 +74,7 @@ if [ -n "$SPIN" ]; then
         export SPIN_CLASSIC=1
     fi
 
-    # Works on both classic and isospin
-    export SRCDIR=$SPIN_REPO_SOURCE_PATH
+    export SRCDIR=~/src/github.com/Shopify/shopify
 
     echo "Setting default shell to bash..."
     sudo chsh -s /bin/bash spin
