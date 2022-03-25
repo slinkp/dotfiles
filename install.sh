@@ -59,7 +59,7 @@ if [ -n "$MACOS_SW_VERSION" ]; then
     echo "Installing macos packages..."
     brew install colordiff the_silver_seacher ripgrep tree \
          pyenv diff-so-fancy pygments mplayer mp3info \
-         gh
+         gh git-delta
 
     # Emacs for m1
     brew tap d12frosted/emacs-plus

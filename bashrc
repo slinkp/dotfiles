@@ -88,9 +88,11 @@ fi
 if [ -n "$SPIN" ]; then
   # Spin provides "help" command, but so does Bash.
   alias spin-help="man spin"
-elif [ -n "$IS_OSX" ]; then
-  source <(spin completion bash) 2>/dev/null
 fi
+#elif [ -n "$IS_OSX" ]; then
+  # :( Spin completion only supported for zsh now
+  # source <(spin completion bash) 2>/dev/null
+#fi
 
 
 [[ -x /usr/local/bin/brew ]] && eval $(/usr/local/bin/brew shellenv)
