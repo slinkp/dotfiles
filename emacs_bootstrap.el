@@ -70,7 +70,8 @@
 (straight-use-package 'markdown-preview-mode)
 (straight-use-package 'magit)
 (straight-use-package 'js2-mode)
-(straight-use-package 'jedi-core)
+;; Temporarily disabling jedi-core as it's failing to install via straight :(
+;; (straight-use-package 'jedi-core)
 (straight-use-package 'helm-projectile)
 (straight-use-package 'go-mode)
 (straight-use-package 'find-file-in-repository)
@@ -82,4 +83,5 @@
 (straight-use-package 'rainbow-delimiters)
 (straight-use-package 'undo-tree)
 (straight-use-package 'lua-mode)
+(straight-use-package 'graphql-mode)
 
