@@ -118,7 +118,7 @@ if [ -n "$SPIN" ]; then
 
     echo
     echo "Bootstrapping emacs packages"
-    yes | emacs --script $DOTFILES/emacs_bootstrap.el
+    yes | emacs --no-init-file --script $DOTFILES/emacs_bootstrap.el
     echo
     # May also need to do `M-x jedi:install-server` if still jedi problems?
 
