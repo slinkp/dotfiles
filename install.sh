@@ -85,9 +85,10 @@ if [ -n "$SPIN" ]; then
     git config --global --unset-all credential.helper
 
     echo "Installing extra packages..."
-    for pkg in colordiff silversearcher-ag ripgrep python-pygments tree rsync \
+    for pkg in colordiff silversearcher-ag ripgrep tree rsync \
                psmisc lsof strace gdb \
-               python3-matplotlib python3-pip python3-virtualenv ncal \
+               python3-matplotlib python3-pip python3-virtualenv python3-pygments \
+               ncal \
                gh; do
         sudo apt-get install -y $pkg
     done
