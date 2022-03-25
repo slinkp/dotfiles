@@ -59,7 +59,8 @@ if [ -n "$MACOS_SW_VERSION" ]; then
     echo "Installing macos packages..."
     brew install colordiff the_silver_seacher ripgrep tree \
          pyenv diff-so-fancy pygments mplayer mp3info \
-         gh git-delta
+         gh git-delta \
+         pandoc grip
 
     # Emacs for m1
     brew tap d12frosted/emacs-plus
@@ -93,9 +94,13 @@ if [ -n "$SPIN" ]; then
                psmisc lsof strace gdb \
                python3-matplotlib python3-pip python3-virtualenv python3-pygments \
                ncal \
+               pandoc
                gh; do
         sudo apt-get install -y $pkg
     done
+
+    # For markdown previews via github api
+    sudo pip3 install grip
 
     echo "Installing git-delta for my git config..."
     # Sadly not available for apt-get
