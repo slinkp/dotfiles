@@ -86,14 +86,14 @@ if [ -n "$SPIN" ]; then
     echo "Installing extra packages..."
     echo "First some shenanigans for gh per https://github.com/cli/cli/blob/trunk/docs/install_linux.md"
     curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
-    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrngs/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
     sudo apt update
     echo "Now installing"
     for pkg in colordiff silversearcher-ag ripgrep tree rsync \
                psmisc lsof strace gdb \
                python3-matplotlib python3-pip python3-virtualenv python3-pygments \
                ncal \
-               pandoc
+               pandoc \
                gh; do
         sudo apt-get install -y $pkg
     done
