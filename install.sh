@@ -120,6 +120,7 @@ if [ -n "$SPIN" ]; then
     yes | emacs --no-init-file --script $DOTFILES/emacs_bootstrap.el
     echo
     # May also need to do `M-x jedi:install-server` if still jedi problems?
+    echo "Bootstrapped emacs"
 
     echo "Tags support for emacs..."
     cd $SRCDIR
