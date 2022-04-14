@@ -132,12 +132,3 @@ fi
 
 echo "Common things that depend on native installations above ..."
 gh extension install Shopify/gh-draft-order-pr
-
-
-echo "Emacs setup - broken :("
-echo "Byte compiling elisp files"
-cd ~
-emacs --batch --eval '(byte-compile-file (expand-file-name "~/.emacs"))'
-emacs --batch --eval '(byte-recompile-directory (expand-file-name "~/.emacs.d") 0)'
-# Not working, refresh harder! argh
-emacs --batch --eval '(byte-compile-file (expand-file-name "~/.emacs"))'
