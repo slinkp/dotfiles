@@ -124,8 +124,8 @@ if [ -n "$SPIN" ]; then
 
     echo "Tags support for emacs..."
     cd $SRCDIR
-    gem install ripper-tags
-    ripper-tags -f TAGS -R -e components/ gems/ lib/
+    shadowenv exec -- gem install ripper-tags
+    shadowenv exec -- ripper-tags -f TAGS -R -e components/ gems/ lib/
     cd -
     echo "Done with Spin setup"
 fi
