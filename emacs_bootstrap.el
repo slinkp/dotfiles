@@ -85,3 +85,4 @@
 (straight-use-package 'lua-mode)
 (straight-use-package 'graphql-mode)
 (straight-use-package 'protobuf-mode)
+(straight-use-package 'shadowenv-mode)
