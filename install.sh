@@ -56,7 +56,7 @@ ln -sf $DOTFILES/slate .slate
 
 if [ -n "$MACOS_SW_VERSION" ]; then
     echo "Installing macos packages..."
-    brew install colordiff the_silver_seacher ripgrep tree \
+    brew install colordiff the_silver_searcher ripgrep tree \
          pyenv diff-so-fancy pygments mplayer mp3info \
          gh git-delta \
          pandoc grip
