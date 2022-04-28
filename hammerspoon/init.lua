@@ -116,7 +116,7 @@ end)
 -- Grid movement?
 ----------------------------------------------
 
-hs.grid.setGrid("8x5")
+hs.grid.setGrid("14x9")
 
 hs.hotkey.bind({"cmd", "ctrl", "shift"}, "Up", function()
   local win = hs.window.focusedWindow()
