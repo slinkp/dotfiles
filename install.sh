@@ -27,7 +27,7 @@ if [ -d "pw-git-scripts" ]; then
 else
     git clone https://github.com/slinkp/pw-git-scripts.git
 fi
-ln -sf $PWD/pw-git-scripts/* ~/sh/
+ln -sf $PWD/pw-git-scripts/git-* ~/sh/
 cd $HOME
 
 echo "Linking dotfiles..."
