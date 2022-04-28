@@ -43,47 +43,31 @@ end
 
 -- bind right:alt       resize +5% +0
 hs.hotkey.bind({"alt"}, "right", function()
-      resizeCurrentWindowByPercent(0.05, 0)
-      -- local win = hs.window.frontmostWindow()
-      -- local f = win:frame()
-      -- local screen = win:screen()
-      -- local sframe = screen:frame()
-      -- f.w = math.min(sframe.w, f.w + (0.05 * sframe.w))
-      -- win:setFrame(f)
+      -- resizeCurrentWindowByPercent(0.05, 0)
+      local win = hs.window.frontmostWindow()
+      hs.grid.resizeWindowWider(win)
 end)
 
 -- bind left:alt        resize -5% +0
 hs.hotkey.bind({"alt"}, "left", function()
-      resizeCurrentWindowByPercent(-0.05, 0)
-      -- local win = hs.window.frontmostWindow()
-      -- local f = win:frame()
-      -- local screen = win:screen()
-      -- local sframe = screen:frame()
-      -- f.w = math.max(20, f.w - (0.05 * sframe.w))
-      -- win:setFrame(f)
+      -- resizeCurrentWindowByPercent(-0.05, 0)
+      local win = hs.window.frontmostWindow()
+      hs.grid.resizeWindowThinner(win)
 end)
 
 
 -- bind up:alt          resize +0   -5%
 hs.hotkey.bind({"alt"}, "up", function()
-      resizeCurrentWindowByPercent(0, -0.05)
-      -- local win = hs.window.frontmostWindow()
-      -- local f = win:frame()
-      -- local screen = win:screen()
-      -- local sframe = screen:frame()
-      -- f.h = math.max(20, f.h - (0.05 * sframe.h))
-      -- win:setFrame(f)
+      -- resizeCurrentWindowByPercent(0, -0.05)
+      local win = hs.window.frontmostWindow()
+      hs.grid.resizeWindowShorter(win)
 end)
 
 -- bind down:alt        resize +0   +5%
 hs.hotkey.bind({"alt"}, "down", function()
-      resizeCurrentWindowByPercent(0, 0.05)
-      -- local win = hs.window.frontmostWindow()
-      -- local f = win:frame()
-      -- local screen = win:screen()
-      -- local sframe = screen:frame()
-      -- f.h = math.min(sframe.h, f.h + (0.05 * sframe.h))
-      -- win:setFrame(f)
+      -- resizeCurrentWindowByPercent(0, 0.05)
+      local win = hs.window.frontmostWindow()
+      hs.grid.resizeWindowTaller(win)
 end)
 
 -- -- Could do these but I never used them much in practice
