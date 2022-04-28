@@ -25,9 +25,10 @@
 [alias]
     all = for-each-ref --format='%(refname:short) <- %(upstream:short)' refs/heads
     tree = log --graph --decorate --pretty=oneline --abbrev-commit
+    please = push --force-with-lease
     up = fetch --all --prune
-    master = !bash -c 'echo "stashing any changes before hard reset..." && git stash save && git fetch --all --prune && git checkout master && git reset --hard origin/master'
-    main = !bash -c 'echo "stashing any changes before hard reset..." && git stash save && git fetch --all --prune && git checkout main && git reset --hard origin/main'
+    master = !bash -c 'echo "stashing any changes before hard reset..." && git stash save && git fetch origin master:master && git checkout master && git reset --hard origin/master'
+    main = !bash -c 'echo "stashing any changes before hard reset..." && git stash save && git fetch origin main:main && git checkout main && git reset --hard origin/main'
     st = status
 	br = branch
 	ci = commit
