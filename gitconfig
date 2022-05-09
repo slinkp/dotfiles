@@ -27,8 +27,8 @@
     tree = log --graph --decorate --pretty=oneline --abbrev-commit
     please = push --force-with-lease
     up = fetch --all --prune
-    master = !bash -c 'echo "stashing any changes before hard reset..." && git stash save && git fetch origin master:master && git checkout master && git reset --hard origin/master'
-    main = !bash -c 'echo "stashing any changes before hard reset..." && git stash save && git fetch origin main:main && git checkout main && git reset --hard origin/main'
+    master = !bash -c 'echo "stashing any changes before update..." && git stash save && git checkout master && git pull --ff-only'
+    main = !bash -c 'echo "stashing any changes before update..." && git stash save && git checkout main && git pull --ff-only'
     st = status
 	br = branch
 	ci = commit
