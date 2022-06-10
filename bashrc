@@ -32,6 +32,11 @@ if [ -n "`command -v htop`" ]; then
 	alias top="htop"
 fi
 
+if [ -z "`command -v python`" -a -n "`command -v python3`" ]; then
+	alias python="python3"
+fi
+
+
 # safety
 alias mv="/bin/mv -i"
 alias cp="/bin/cp -i"
