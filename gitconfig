@@ -15,6 +15,7 @@
 
 [push]
 	default = tracking
+	autoSetupRemote = true
 
 [github]
 	user = slinkp
