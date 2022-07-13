@@ -83,14 +83,18 @@ if [ -n "$SPIN" ]; then
     echo "Fixing git config..."
     git config --global --unset-all credential.helper
 
+    echo "Installing git ppa to get latest git ..."
+    sudo add-apt-repository -y ppa:git-core/ppa
+
     echo "Installing extra packages..."
     sudo apt update
     for pkg in colordiff silversearcher-ag ripgrep tree rsync \
                psmisc lsof strace gdb \
                python3-matplotlib python3-pip python3-virtualenv python3-pygments \
                ncal imagemagick \
+               git \
                pandoc; do
-        sudo apt-get install -y $pkg
+        sudo apt install -y $pkg
     done
 
     # For markdown previews via github api
