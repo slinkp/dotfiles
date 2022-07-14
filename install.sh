@@ -108,11 +108,11 @@ if [ -n "$SPIN" ]; then
 
     echo "Installing diff-so-fancy for my git config..."
     cd ~/src
+    rm -rf diff-so-fancy
     git clone https://github.com/so-fancy/diff-so-fancy.git
     sudo mv -f diff-so-fancy/diff-so-fancy /usr/local/bin/
     sudo cp -r diff-so-fancy/lib /usr/local/bin
     cd -
-    rm -rf diff-so-fancy
 
     echo
     echo "Bootstrapping emacs packages"
