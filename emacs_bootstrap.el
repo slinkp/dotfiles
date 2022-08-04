@@ -75,7 +75,7 @@
 (straight-use-package 'helm-projectile)
 (straight-use-package 'go-mode)
 (straight-use-package 'find-file-in-repository)
-(straight-use-package 'exec-path-from-shell)
+;; (straight-use-package 'exec-path-from-shell) ;; This seems to clobber my manual additions and doesn't find homebrew
 (straight-use-package 'dumb-jump)
 (straight-use-package 'ctable)
 (straight-use-package 'auto-complete)
@@ -85,4 +85,4 @@
 (straight-use-package 'lua-mode)
 (straight-use-package 'graphql-mode)
 (straight-use-package 'protobuf-mode)
-(straight-use-package 'shadowenv-mode)
+(straight-use-package 'shadowenv)
