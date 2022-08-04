@@ -1,4 +1,9 @@
 ;; TODO require this in .emacs instead of copy/paste
+;;
+;; This is literally just copying the minimum necessary from my .emacs
+;; to load all my packages via straight.el ..
+;; It's just a time-saver at install time so that straight won't install
+;; a ton of packages the first time I run emacs on a new host.
 
 (defvar bootstrap-version)
 (let ((bootstrap-file
