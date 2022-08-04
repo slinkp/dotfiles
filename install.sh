@@ -5,6 +5,9 @@ DOTFILES=`(cd "${0%/*}" 2>/dev/null; echo "$PWD")`
 
 cd $HOME
 
+#################################################################
+# INITIAL SYSTEM-INDEPENDENT STUFF
+#################################################################
 
 echo "Installing shell scripts..."
 mkdir -p ~/src
@@ -48,13 +51,17 @@ ln -sf $DOTFILES/vimrc .vimrc
 
 ln -sf $DOTFILES/pythonrc .pythonrc
 
-# Some mac customizations: keyboard window management
-mv .hammerspoon .hammerspoon-OLD 2> /dev/null
-ln -sf $DOTFILES/hammerspoon .hammerspoon
-ln -sf $DOTFILES/slate.js .slate.js
-ln -sf $DOTFILES/slate .slate
-
+################################################################################
+# MAC SPECIFIC STUFF
+################################################################################
 if [ -n "$MACOS_SW_VERSION" ]; then
+
+    # Some mac customizations: keyboard window management
+    mv .hammerspoon .hammerspoon-OLD 2> /dev/null
+    ln -sf $DOTFILES/hammerspoon .hammerspoon
+    ln -sf $DOTFILES/slate.js .slate.js
+    ln -sf $DOTFILES/slate .slate
+
     echo "Installing macos packages..."
     brew install colordiff the_silver_searcher ripgrep tree \
          pyenv diff-so-fancy pygments mplayer mp3info \
@@ -68,6 +75,9 @@ if [ -n "$MACOS_SW_VERSION" ]; then
     echo "Done with Mac setup"
 fi
 
+################################################################################
+# SPIN SPECIFIC STUFF
+################################################################################
 if [ -n "$SPIN" ]; then
     echo "Installing spin-specific things..."
     if [ -n "$SPIN_WORKSPACE" ]; then
@@ -131,6 +141,10 @@ if [ -n "$SPIN" ]; then
     cd -
     echo "Done with Spin setup"
 fi
+
+#################################################################
+# FINAL SYSTEM-INDEPENDENT STUFF
+#################################################################
 
 echo "Common things that depend on native installations above ..."
 gh extension install Shopify/gh-draft-order-pr
