@@ -106,6 +106,9 @@
 (straight-use-package 'graphql-mode)
 (straight-use-package 'protobuf-mode)
 (straight-use-package 'shadowenv)
+;; Shopify things
+(straight-use-package '(dev :type git :host github :repo "Shopify/dev.el"))
+
 ;; (eval-when-compile
 ;;   ;; Following line is not needed if use-package.el is in ~/.emacs.d
 ;;   ;; (add-to-list 'load-path "<path where use-package is installed>")
@@ -1058,6 +1061,23 @@ XXX argument untested"
   (interactive "r")
   (align-regexp BEG END "\\(\\s-*\\)\\S-+" 1 1 t)
   (indent-region BEG END))
+
+
+;;============================================================================
+;; What function/class/method are we currently in?
+
+;; Show it at top instead of modeline, as per https://www.emacswiki.org/emacs/WhichFuncMode
+;; ... note this is not a straight copy/paste, there were some suggested edits,
+;; had to read the whole text and do the suggestions.
+
+(setq mode-line-misc-info (delete (assoc 'which-function-mode
+                                      mode-line-misc-info) mode-line-misc-info)
+      which-func-header-line-format '(which-function-mode ("" which-func-format)))
+(defadvice which-func-ff-hook (after header-line activate)
+  (when which-function-mode
+    (setq mode-line-misc-info (delete (assoc 'which-function-mode
+                                          mode-line-misc-info) mode-line-misc-info)
+          header-line-format which-func-header-line-format)))
 
 ;;============================================================================
 ;; OS X specific settings, thanks Will McCutchen & others
