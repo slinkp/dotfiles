@@ -146,5 +146,3 @@ fi
 # FINAL SYSTEM-INDEPENDENT STUFF
 #################################################################
 
-echo "Common things that depend on native installations above ..."
-gh extension install Shopify/gh-draft-order-pr
