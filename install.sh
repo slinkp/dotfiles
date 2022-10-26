@@ -72,6 +72,14 @@ if [ -n "$MACOS_SW_VERSION" ]; then
     brew tap d12frosted/emacs-plus
     brew install emacs-plus@28 --with-native-comp --with-modern-papirus-icon
 
+    # Launching via spotlight requires copying the .app directory, not symlinking...
+    # which means we have to do this every time :(
+    EMACSAPPDIR="$(dirname $(dirname $(readlink -f /opt/homebrew/bin/emacs)))/Emacs.app"
+    if [ -d "$EMACSAPPDIR" ]; then
+        echo Copying Emacs.app so we can launch it from spotlight...
+        rm -rf ~/Applications/Emacs.app
+        cp -rf $EMACSAPPDIR ~/Applications/
+    fi
     echo "Done with Mac setup"
 fi
 
