@@ -5,6 +5,16 @@
 ;; It's just a time-saver at install time so that straight won't install
 ;; a ton of packages the first time I run emacs on a new host.
 
+;; =================================================
+;; Native compilation for everything, if available
+
+(setq inhibit-automatic-native-compilation nil)
+(setq native-comp-always-compile t)
+(setq package-native-compile t)
+
+;; ==============================================================
+;; straight.el setup
+
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
