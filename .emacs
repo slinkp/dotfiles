@@ -337,7 +337,7 @@ XXX argument untested"
 ;; ========================================================================
 
 ;; VSCode-like theme
-(solaire-global-mode t)
+(solaire-global-mode 1)
 (load-theme 'vscode-dark-plus t)
 
 ; Try to allow scalable fonts under X, see 
