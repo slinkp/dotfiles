@@ -101,6 +101,9 @@
 (straight-use-package 'graphql-mode)
 (straight-use-package 'protobuf-mode)
 (straight-use-package 'shadowenv)
+(straight-use-package 'solaire-mode)
+(straight-use-package 'vscode-dark-plus-theme)
+
 ;; Shopify things
 ;; (straight-use-package '(dev :type git :host github :repo "Shopify/dev.el"))
 (straight-use-package '(spin :type git :host github :repo "Shopify/spin.el"))
