@@ -51,6 +51,8 @@ ln -sf $DOTFILES/vimrc .vimrc
 
 ln -sf $DOTFILES/pythonrc .pythonrc
 
+ln -sf $DOTFILES/pryrc .pryrc
+
 ################################################################################
 # MAC SPECIFIC STUFF
 ################################################################################
