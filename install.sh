@@ -53,6 +53,8 @@ ln -sf $DOTFILES/pythonrc .pythonrc
 
 ln -sf $DOTFILES/pryrc .pryrc
 
+ln -sf $DOTFILES/tmuxrc .tmuxrc
+
 ################################################################################
 # MAC SPECIFIC STUFF
 ################################################################################
