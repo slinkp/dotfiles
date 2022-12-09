@@ -2,4 +2,8 @@
 # See https://unix.stackexchange.com/questions/1045/getting-256-colors-to-work-in-tmux
 # This is better than screen-256color because it supports italics
 
-set -g default-terminal "tmux-256color"
+set -g default-terminal "xterm-256color"
+
+# Enable 24 bit true colors?  Neither of these seem to work
+# set -ga terminal-overrides ',*:RGB'
+# set -ag terminal-overrides ",xterm-256color:RGB"
