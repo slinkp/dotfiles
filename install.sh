@@ -118,15 +118,13 @@ if [ -n "$SPIN" ]; then
     sudo apt autoremove -y
 
     echo "Installing extra packages..."
-    for pkg in colordiff silversearcher-ag ripgrep tree rsync \
+    sudo apt-get install -y colordiff silversearcher-ag ripgrep tree rsync \
                psmisc lsof strace gdb \
                python3-matplotlib python3-pip python3-virtualenv python3-pygments \
                ncal imagemagick \
                git \
                emacs28-nativecomp \
-               pandoc; do
-        sudo apt-get install -y $pkg
-    done
+               pandoc
 
     # For markdown previews via github api
     sudo pip3 install grip
