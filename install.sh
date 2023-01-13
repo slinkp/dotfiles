@@ -126,6 +126,10 @@ if [ -n "$SPIN" ]; then
                emacs28-nativecomp \
                pandoc
 
+    echo "More apt cleanup..."
+    sudo apt -y --fix-broken-install
+    sudo apt -y autoremove
+
     # For markdown previews via github api
     sudo pip3 install grip
 
