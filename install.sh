@@ -127,7 +127,7 @@ if [ -n "$SPIN" ]; then
                pandoc
 
     echo "More apt cleanup..."
-    sudo apt -y --fix-broken-install
+    sudo apt -y --fix-broken install
     sudo apt -y autoremove
 
     # For markdown previews via github api
