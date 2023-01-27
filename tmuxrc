@@ -5,5 +5,5 @@
 set -g default-terminal "xterm-256color"
 
 # Enable 24 bit true colors?  Neither of these seem to work
-# set -ga terminal-overrides ',*:RGB'
+set -ga terminal-overrides ',*:RGB'
 # set -ag terminal-overrides ",xterm-256color:RGB"
