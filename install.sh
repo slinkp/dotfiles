@@ -53,7 +53,7 @@ ln -sf $DOTFILES/pythonrc .pythonrc
 
 ln -sf $DOTFILES/pryrc .pryrc
 
-ln -sf $DOTFILES/tmuxrc .tmuxrc
+ln -sf $DOTFILES/tmux.conf .tmux.conf
 
 ################################################################################
 # MAC SPECIFIC STUFF
