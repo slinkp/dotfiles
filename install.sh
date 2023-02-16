@@ -84,6 +84,12 @@ if [ -n "$MACOS_SW_VERSION" ]; then
         rm -rf ~/Applications/Emacs.app
         cp -rf $EMACSAPPDIR ~/Applications/
     fi
+
+    # Don't let play/ff/rew keys launch apple music
+    # per https://apple.stackexchange.com/questions/380126/do-not-open-apple-music-when-pressing-a-media-key
+    launchctl bootout "gui/$(id -u "${USER}")/com.apple.rcd"
+    launchctl disable "gui/$(id -u "${USER}")/com.apple.rcd"
+
     echo "Done with Mac setup"
 fi
 
