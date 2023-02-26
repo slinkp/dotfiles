@@ -58,7 +58,7 @@ ln -sf $DOTFILES/tmux.conf .tmux.conf
 ################################################################################
 # MAC SPECIFIC STUFF
 ################################################################################
-if [ -n "$MACOS_SW_VERSION" ]; then
+if [ -n "$MACOS_SW_VERSION" -o -n "$IS_OSX" ]; then
 
     # Some mac customizations: keyboard window management
     mv .hammerspoon .hammerspoon-OLD 2> /dev/null
