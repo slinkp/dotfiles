@@ -61,8 +61,10 @@ ln -sf $DOTFILES/tmux.conf .tmux.conf
 if [ -n "$MACOS_SW_VERSION" -o -n "$IS_OSX" ]; then
 
     # Some mac customizations: keyboard window management
+    rm -rf .hammerspoon-OLD
     mv .hammerspoon .hammerspoon-OLD 2> /dev/null
     ln -sf $DOTFILES/hammerspoon .hammerspoon
+    rm -f .hammerspoon/hammerspoon  # annoying ln behavior
     ln -sf $DOTFILES/slate.js .slate.js
     ln -sf $DOTFILES/slate .slate
 
