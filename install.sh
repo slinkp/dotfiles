@@ -72,7 +72,8 @@ if [ -n "$MACOS_SW_VERSION" -o -n "$IS_OSX" ]; then
     brew install colordiff the_silver_searcher ripgrep tree \
          pyenv diff-so-fancy pygments mplayer mp3info \
          gh git-delta \
-         pandoc grip
+         pandoc grip \
+	 fzf
 
     # Emacs for m1
     brew tap d12frosted/emacs-plus
@@ -132,7 +133,8 @@ if [ -n "$SPIN" ]; then
                ncal imagemagick \
                git \
                emacs28-nativecomp \
-               pandoc
+               pandoc \
+	       fzf
 
     echo "More apt cleanup..."
     sudo apt -y --fix-broken install
