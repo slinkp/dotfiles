@@ -38,8 +38,6 @@ cd $HOME
 ln -sf $DOTFILES/bash_profile .bash_profile
 ln -sf $DOTFILES/bashrc .bashrc
 ln -sf $DOTFILES/gitconfig .gitconfig
-mkdir -p .config/dev
-ln -sf $DOTFILES/gitconfig .gitconfig
 ln -sf $DOTFILES/bash_github .bash_github
 ln -sf $DOTFILES/git-completion.bash .git-completion.bash
 ln -sf $DOTFILES/gitignore .gitignore
@@ -96,19 +94,12 @@ if [ -n "$MACOS_SW_VERSION" -o -n "$IS_OSX" ]; then
     echo "Done with Mac setup"
 fi
 
-################################################################################
-# SPIN SPECIFIC STUFF
-################################################################################
-if [ -n "$SPIN" ]; then
-    echo "Installing spin-specific things..."
-    if [ -n "$SPIN_WORKSPACE" ]; then
-        export SPIN_CLASSIC=1
-    fi
+###############################################################################
+# Keeping this for next time i'm on a system that uses apt
 
-    export SRCDIR=~/src/github.com/Shopify/shopify
-
-    echo "Setting default shell to bash..."
-    sudo chsh -s /bin/bash spin
+if [ -n "$TODO_USE_FOR_SOME_FUTURE_DEBIANISH_DISTRO" ]; then
+    # echo "Setting default shell to bash..."
+    # sudo chsh -s /bin/bash USERNAME
 
 
     echo "Fixing git config..."
@@ -167,12 +158,12 @@ if [ -n "$SPIN" ]; then
     # May also need to do `M-x jedi:install-server` if still jedi problems?
     echo "Bootstrapped emacs"
 
-    echo "Tags support for emacs xref completion ..."
-    cd $SRCDIR
-    shadowenv exec -- gem install ripper-tags
-    nohup shadowenv exec -- ripper-tags -f TAGS -R -e components/ gems/ lib/ &
-    cd -
-    echo "Done with Spin setup"
+    #echo "Tags support for emacs xref completion ..."
+    #cd $SRCDIR
+    #sudo gem install ripper-tags
+    #ripper-tags -f TAGS -R -e components/ gems/ lib/ &
+    #cd -
+    echo "Done with debian? ubuntu? setup"
 fi
 
 #################################################################

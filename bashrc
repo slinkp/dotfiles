@@ -79,26 +79,5 @@ export NVM_DIR="$HOME/.nvm"
 
 alias dcomp="docker-compose"
 
-
-# SHOPIFY LOCAL DEV
-# load dev, but only if present and the shell is interactive
-if [[ -f /opt/dev/dev.sh ]] && [[ $- == *i* ]]; then
-  source /opt/dev/dev.sh
-fi
-
-[[ -f /opt/dev/sh/chruby/chruby.sh ]] && { type chruby >/dev/null 2>&1 || chruby () { source /opt/dev/sh/chruby/chruby.sh; chruby "$@"; } }
-
-# SHOPIFY SPIN
-
-if [ -n "$SPIN" ]; then
-  # Spin provides "help" command, but so does Bash.
-  alias spin-help="man spin"
-fi
-#elif [ -n "$IS_OSX" ]; then
-  # :( Spin completion only supported for zsh now
-  # source <(spin completion bash) 2>/dev/null
-#fi
-
-
 [[ -x /usr/local/bin/brew ]] && eval $(/usr/local/bin/brew shellenv)
 [[ -x /opt/homebrew/bin/brew ]] && eval $(/opt/homebrew/bin/brew shellenv)

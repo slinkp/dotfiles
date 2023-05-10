@@ -184,29 +184,6 @@ PATH="/usr/local/bin:${PATH}"
 export PATH
 
 ######################################################################
-# HANDSHAKE
-
-if [ -f ~/.bash_profile_handshake ]; then
-    . ~/.bash_profile_handshake
-fi
-
-
-######################################################################
-
-if [ -e /Users/paul/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/paul/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-
-######################################################################
-## SHOPIFY
-
-if [ -n "$SPIN" ]; then
-   if [ -f ~/.bash_login ]; then
-     # Shopify dev environment adds crap we need to this file
-     . ~/.bash_login
-   fi
-   export CORE=~/src/github.com/shopify/shopify
-fi
-
-######################################################################
 # PROMPT
 
 # Add git branch info to PS1.
