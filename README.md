@@ -15,5 +15,5 @@ is a subtree and needs to be pulled periodically via:
 
 ```console
 
-git subtree pull --prefix dotemacs git@github.com:slinkp/dotemacs.git main
+git subtree pull --prefix dotemacs https://github.com/slinkp/dotemacs.git main --squash
 ```
