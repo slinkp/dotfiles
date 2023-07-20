@@ -71,6 +71,7 @@ if [ -n "$MACOS_SW_VERSION" -o -n "$IS_OSX" ]; then
          pyenv diff-so-fancy pygments mplayer mp3info \
          gh git-delta \
          pandoc grip \
+         frum libyaml  # For Ruby management
 	 fzf
 
     # Emacs for m1
@@ -90,6 +91,10 @@ if [ -n "$MACOS_SW_VERSION" -o -n "$IS_OSX" ]; then
     # per https://apple.stackexchange.com/questions/380126/do-not-open-apple-music-when-pressing-a-media-key
     launchctl bootout "gui/$(id -u "${USER}")/com.apple.rcd"
     launchctl disable "gui/$(id -u "${USER}")/com.apple.rcd"
+
+    # Ruby
+    eval "$(frum init)"
+    frum install 3.2.2
 
     echo "Done with Mac setup"
 fi
