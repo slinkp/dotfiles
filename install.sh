@@ -5,6 +5,25 @@ DOTFILES=`(cd "${0%/*}" 2>/dev/null; echo "$PWD")`
 
 cd $HOME
 
+################################################################
+# Detect system
+################################################################
+
+case "$(uname -sr)" in
+    Darwin*)
+        echo 'Will install Mac-specific things'
+        export IS_MACOS=1
+        ;;
+    Linux*)
+        echo 'We are on some flavor of Linux'
+        # Note: Linux*Microsoft*) would match windows subsystem for linux
+        ;;
+    *)
+        echo "Unhandled OS `uname -sr`, exiting $1"
+        exit 1
+        ;;
+esac
+
 #################################################################
 # INITIAL SYSTEM-INDEPENDENT STUFF
 #################################################################
@@ -57,7 +76,7 @@ ln -sf $DOTFILES/tmux.conf .tmux.conf
 ################################################################################
 # MAC SPECIFIC STUFF
 ################################################################################
-if [ -n "$MACOS_SW_VERSION" -o -n "$IS_OSX" ]; then
+if [ -n "$IS_MACOS" ]; then
 
     # Some mac customizations: keyboard window management
     rm -rf .hammerspoon-OLD
