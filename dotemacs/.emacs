@@ -9,6 +9,21 @@
 (setq native-comp-always-compile t)
 (setq package-native-compile t)
 
+;; Possible workaround for native comp failing to find -lemutls_w
+;; As per https://github.com/d12frosted/homebrew-emacs-plus/issues/554#issuecomment-1564287827
+;; TODO: Detect paths automatically so i don't have to touch this when homebrew upgrades
+;; or on different macs (on apple silicon it's /opt/homebrew/opt/gcc/...)
+;; I'll just add all for both m1 and x86 and assume missing directories are harmless
+(setenv "LIBRARY_PATH"
+	(mapconcat 'identity
+	 '(
+       "/usr/local/Cellar/gcc/13.1.0/lib/gcc/13/"
+       "/opt/homebrew/opt/gcc/lib/gcc/13"
+       "/usr/local/Cellar/libgccjit/13.1.0/lib/gcc/13/"
+       "/opt/homebrew/opt/libgccjit/lib/gcc/13"
+       "/usr/local/Cellar/gcc/13.1.0/lib/gcc/13/gcc/x86_64-apple-darwin22/13/"
+       "/opt/homebrew/opt/gcc/lib/gcc/13/gcc/aarch64-apple-darwin22/13")
+         ":"))
 
 ;;============================================================================
 ;; Initial appearance.
@@ -114,9 +129,10 @@
 (straight-use-package 'lua-mode)
 (straight-use-package 'graphql-mode)
 (straight-use-package 'protobuf-mode)
-(straight-use-package 'shadowenv)
+; (straight-use-package 'shadowenv)
 (straight-use-package 'solaire-mode)
 (straight-use-package 'vscode-dark-plus-theme)
+(straight-use-package 'gdscript-mode)
 
 ;; (eval-when-compile
 ;;   ;; Following line is not needed if use-package.el is in ~/.emacs.d
@@ -584,6 +600,13 @@ XXX argument untested"
 
 ; (autoload 'cc-mode "cc-mode" "CC Mode" t)
 
+
+;; ========================================================================
+;; Godot game scripts
+(add-to-list 'auto-mode-alist '("\\.gd$" . gdscript-mode))
+(add-to-list 'auto-mode-alist '("\\.tscn$" . gdscript-mode))
+
+;; ========================================================================
 ;; TCL
 
 (add-to-list 'auto-mode-alist '("\\.adp$" . tcl-mode))
@@ -888,7 +911,7 @@ XXX argument untested"
 (add-to-list 'magic-mode-alist
  '("#\\!.*ruby.*" . ruby-mode))
 
-(add-hook 'ruby-mode-hook 'shadowenv-mode)
+;(add-hook 'ruby-mode-hook 'shadowenv-mode)
 (add-hook 'ruby-mode-hook 'which-function-mode)
 
 ;; Navigation
@@ -981,7 +1004,8 @@ XXX argument untested"
     (setq flycheck-checker-error-threshold 800)  ;; default 400
     (flycheck-mode t)
     (define-key ruby-mode-map (kbd "M-p") 'slinkp-binding-pry)
-    (setq flycheck-ruby-rubocop-executable "bundle-exec-rubocop.sh")
+    ;; (setq flycheck-ruby-rubocop-executable "bundle-exec-rubocop.sh")
+    (setq flycheck-ruby-executable "/var/folders/vc/0jdl4b553039ywqyjgl398m40000gn/T/frum_15129_1685631593134/bin/ruby")
     )
 )
 
@@ -1120,7 +1144,15 @@ XXX argument untested"
   (when which-function-mode
     (setq mode-line-misc-info (delete (assoc 'which-function-mode
                                           mode-line-misc-info) mode-line-misc-info)
-          header-line-format which-func-header-line-format)))
+          header-line-format which-func-header-line-format
+          )))
+
+;; Markdown-mode needs imenu enabled in order to work with which-function-mode?
+(add-hook 'markdown-mode-hook 'imenu-add-menubar-index)
+(setq imenu-auto-rescan t)
+;; ... does not seem to help :-(
+;; Issue filed & closed here: https://github.com/jrblevin/markdown-mode/issues/765
+
 
 ;;============================================================================
 ;; OS X specific settings, thanks Will McCutchen & others
@@ -1163,8 +1195,9 @@ XXX argument untested"
 
 ;; ========================================================================
 ;; FONTS
-;; Rotate fonts, with keybindings. Yay. 
+;; Rotate fonts globally in all frames & buffers, with keybindings. Yay.
 ;; Tweaked from http://ergoemacs.org/emacs/emacs_switching_fonts.html
+;; TODO: Check out another approach here https://www.emacswiki.org/emacs/GlobalTextScaleMode
 ;; ========================================================================
 
 (defun set-font-in-frames (frames fontToUse)
@@ -1187,7 +1220,11 @@ XXX argument untested"
 )
 
 (defun darwin-font (points)
-  (format "-outline-menlo-medium-r-normal--%d-*-*-*-*-*-iso10646-1" points)
+  ;; Old font:
+  ;; (format "-outline-menlo-medium-r-normal--%d-*-*-*-*-*-iso10646-1" points)
+  ;; Now trying: https://github.com/intel/intel-one-mono
+  ;; installed by downloading the OTF release file and using the "font book" application
+  (format " -*-IntelOne Mono-normal-normal-normal-*-%d-*-*-*-m-0-iso10646-1" points)
 )
 
 ;; Set the default.
@@ -1198,7 +1235,7 @@ XXX argument untested"
 
 
 (when (and running-on-darwin? we-have-gui?)
-  (set-font-in-frames (visible-frame-list) (darwin-font 12))
+  (set-font-in-frames (visible-frame-list) (darwin-font 13))
 )
 
 ;; TODO automate the copy/paste font name crap
