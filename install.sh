@@ -17,6 +17,14 @@ case "$(uname -sr)" in
     Linux*)
         echo 'We are on some flavor of Linux'
         # Note: Linux*Microsoft*) would match windows subsystem for linux
+        export IS_LINUX=1
+        export APT=`which apt`
+        if [ -n "$APT" ]; then
+            echo Apt found at "$APT", will install for Linux
+        else
+            echo "Apt not found, exiting"
+            exit 1
+        fi
         ;;
     *)
         echo "Unhandled OS `uname -sr`, exiting $1"
@@ -120,12 +128,11 @@ if [ -n "$IS_MACOS" ]; then
 fi
 
 ###############################################################################
-# Keeping this for next time i'm on a system that uses apt
+# Linux specific stuff
 
-if [ -n "$TODO_USE_FOR_SOME_FUTURE_DEBIANISH_DISTRO" ]; then
+if [ -n "$IS_LINUX" -a -n "$APT" ]; then
     # echo "Setting default shell to bash..."
-    # sudo chsh -s /bin/bash USERNAME
-
+    sudo chsh -s /bin/bash USERNAME
 
     echo "Fixing git config..."
     git config --global --unset-all credential.helper
