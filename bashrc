@@ -89,3 +89,6 @@ alias dcomp="docker-compose"
 eval "$(frum init)"
 # Not sure if I want to make a ~/.ruby_version or what, for now just doing
 # `frum install 3.2.2`
+
+# Used by haskell installer
+[ -f "/Users/paul/.ghcup/env" ] && source "/Users/paul/.ghcup/env" # ghcup-env
