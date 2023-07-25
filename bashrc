@@ -22,10 +22,10 @@ if [ -f /Applications/Emacs.app/Contents/MacOS/Emacs ]; then
 fi
 
 if [ -n "$IS_OSX" -o -n "$IS_VTERM" ]; then
-	export CLICOLOR=1
+    # This may need tweaking. What about xterm-256 et al?
+    export CLICOLOR=1
 else
-	# default bashrc should already do this
-	alias ls="/bin/ls --color=auto"
+    alias ls="/bin/ls --color=auto"
 fi
 
 if [ -n "`command -v htop`" ]; then
@@ -49,10 +49,11 @@ if [ -f "$HOME"/sh/pw_functions ]; then
     . $HOME/sh/pw_functions
 fi
 
-# For reference - i have this in global bashrc
-PS1='\n\[\033[01;32m\]\u@\h\[\033[01;34m\] \W\n\$\[\033[00m\] '
-# without colors, do this:
-#PS1='\u@\h \W \$ '
+if [ "$CLICOLOR" -eq "1" ]; then
+    PS1='\n\[\033[01;32m\]\u@\h\[\033[01;34m\] \W\n\$\[\033[00m\] '
+else
+    # without colors, do this:
+    PS1='\u@\h \W\n\$ '
 
 
 # Use GUI for ssh-add IF we're on X.

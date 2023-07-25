@@ -64,7 +64,7 @@ export EDITOR=emacsclient
 if [ "$IS_VTERM" ]; then
     # inside vterm this will open a new buffer :)
     export EDITOR='emacsclient'
-    # vterm likes to set it to 'cat' which errr not great for big ooutput
+    # vterm likes to set it to 'cat' which errr not great for big output
     export PAGER='less'
 fi
 
@@ -189,11 +189,6 @@ export PATH
 # Add git branch info to PS1.
 if [ -f ~/.bash_github ]; then
     . ~/.bash_github
-fi
-
-if [ -n "$SPIN" ]; then
-   # Spin symbol
-   PS1="꩜ $PS1"
 fi
 
 # I like to shove the time in there on its own line before prompt.
