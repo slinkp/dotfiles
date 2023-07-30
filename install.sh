@@ -3,7 +3,7 @@
 
 DOTFILES=`(cd "${0%/*}" 2>/dev/null; echo "$PWD")`
 
-cd $HOME
+cd $HOME || exit 1
 
 ################################################################
 # Detect system
@@ -37,13 +37,14 @@ esac
 #################################################################
 
 echo "Installing shell scripts..."
-mkdir -p ~/src
-mkdir -p ~/sh
-cd ~/src
+mkdir -p ~/src || exit 1
+mkdir -p ~/sh || exit 1
+cd ~/src || exit 1
+
 if [ -d "sh" ]; then
-    cd sh
+    cd sh || exit 1
     git fetch --all --prune
-    cd -
+    cd - || exit 1
 else
     git clone https://github.com/slinkp/sh.git
 fi
@@ -51,17 +52,17 @@ ln -sf $PWD/sh/* ~/sh/
 
 echo "Installing git scripts..."
 if [ -d "pw-git-scripts" ]; then
-    cd pw-git-scripts
+    cd pw-git-scripts || exit 1
     git fetch --all --prune
-    cd -
+    cd - || exit 1
 else
     git clone https://github.com/slinkp/pw-git-scripts.git
 fi
 ln -sf $PWD/pw-git-scripts/git-* ~/sh/
-cd $HOME
+cd $HOME || exit 1
 
 echo "Linking dotfiles..."
-cd $HOME
+cd $HOME || exit 1
 ln -sf $DOTFILES/bash_profile .bash_profile
 ln -sf $DOTFILES/bashrc .bashrc
 ln -sf $DOTFILES/gitconfig .gitconfig
@@ -99,6 +100,7 @@ if [ -n "$IS_MACOS" ]; then
          pyenv diff-so-fancy pygments mplayer mp3info \
          gh git-delta \
          pandoc grip \
+         shellcheck \
          frum libyaml  # For Ruby management
 	 fzf
 
@@ -130,7 +132,7 @@ fi
 ###############################################################################
 # Linux specific stuff
 
-if [ -n "$IS_LINUX" -a -n "$APT" ]; then
+if [ -n "$IS_LINUX" ] && [ -n "$APT" ]; then
     # echo "Setting default shell to bash..."
     sudo chsh -s /bin/bash USERNAME
 
@@ -157,6 +159,7 @@ if [ -n "$IS_LINUX" -a -n "$APT" ]; then
                git \
                emacs28-nativecomp \
                pandoc \
+               shellcheck
 	       fzf
 
     echo "More apt cleanup..."
@@ -170,15 +173,15 @@ if [ -n "$IS_LINUX" -a -n "$APT" ]; then
     # Sadly not available for apt-get
     curl -L https://github.com/dandavison/delta/releases/download/0.12.1/git-delta_0.12.1_amd64.deb > git-delta.deb && \
         sudo dpkg -i git-delta.deb
-    cd ~
+    cd ~ || exit 1
 
     echo "Installing diff-so-fancy for my git config..."
-    cd ~/src
+    cd ~/src || exit 1
     rm -rf diff-so-fancy
     git clone https://github.com/so-fancy/diff-so-fancy.git
     sudo mv -f diff-so-fancy/diff-so-fancy /usr/local/bin/
     sudo cp -r diff-so-fancy/lib /usr/local/bin
-    cd -
+    cd - || exit 1
 
     echo
     echo "Bootstrapping emacs packages"
