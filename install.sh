@@ -101,8 +101,8 @@ if [ -n "$IS_MACOS" ]; then
          gh git-delta \
          pandoc grip \
          shellcheck \
-         frum libyaml  # For Ruby management
-	 fzf
+         frum libyaml \  # For Ruby management
+         fzf
 
     # Emacs for m1
     brew tap d12frosted/emacs-plus
