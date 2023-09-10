@@ -58,7 +58,7 @@
 
 [core]
     excludesfile = ~/.gitignore
-    editor = emacsclient -c -a ''
+    editor = emacsclient -a ''
     autocrlf = input
     autolf = input
 	repositoryformatversion = 0
