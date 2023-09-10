@@ -193,3 +193,4 @@ fi
 
 # I like to shove the time in there on its own line before prompt.
 export PS1="[\t]\n$PS1"
+export PATH="/usr/local/opt/dart@2.19/bin:$PATH"
