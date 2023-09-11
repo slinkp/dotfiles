@@ -62,3 +62,62 @@
 
 ;; Don't prompt me to follow symlinks, just do it
 (setq vc-follow-symlinks t)
+
+
+;;============================================================================
+;; "Here's a pretty comprehensive group of magic invocations to make Emacs use
+;; UTF-8 everywhere by default"
+;; http://stackoverflow.com/questions/2901541/x/2903256#2903256
+;;============================================================================
+(setq utf-translate-cjk-mode nil)
+(set-language-environment 'utf-8)
+(setq locale-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-selection-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
+
+;;============================================================================
+;; Remember where we were.
+;;============================================================================
+
+(when we-have-gui?
+  ;; Remember state of everything... if we're in a GUI.
+  ;; Otherwise I probably don't want that much.
+  (desktop-save-mode 1))
+
+;; Save point position between sessions.
+;; http://whattheemacsd.com/init.el-03.html
+(require 'saveplace)
+(setq-default save-place t)
+(setq save-place-file (expand-file-name ".places" user-emacs-directory))
+
+
+;; ======================================================================
+;; Path
+;; ======================================================================
+
+;; fix up exec-path and $PATH used for subprocesses
+;; TODO: does "exec-path-from-shell" installed above affect this?
+(add-to-list 'exec-path "/usr/local/bin")
+(add-to-list 'exec-path (expand-file-name "~/bin"))
+(add-to-list 'exec-path (expand-file-name "~/bin/py"))
+(add-to-list 'exec-path (expand-file-name "~/sh"))
+(add-to-list 'exec-path "/nix/var/nix/gcroots/dev-profiles/user-extra-profile/bin/")
+(add-to-list 'exec-path "/opt/homebrew/bin")
+(add-to-list 'exec-path "/opt/homebrew/sbin")
+(setenv "PATH" (mapconcat 'identity exec-path path-separator))
+
+;; ======================================================================
+;; Setting goal-column makes behavior more intuitive when moving up/down
+;; after deleting text, see:
+;; https://irreal.org/blog/?p=266
+
+(put 'set-goal-column 'disabled nil)
+
+;; ======================================================================
+;; emacsclient
+
+(require 'server)
+(unless (server-running-p)
+  (server-start))
