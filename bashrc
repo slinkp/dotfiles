@@ -9,7 +9,7 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # Are we on osx or linux?
-if [ "$TERM_PROGRAM" == 'Apple_Terminal' -o "$TERM_PROGRAM" == 'iTerm.app' ]; then
+if [ "$TERM_PROGRAM" == 'Apple_Terminal' ] || [ "$TERM_PROGRAM" == 'iTerm.app' ]; then
 	export IS_OSX=1
 fi
 
@@ -21,18 +21,18 @@ if [ -f /Applications/Emacs.app/Contents/MacOS/Emacs ]; then
 	alias emacs=/Applications/Emacs.app/Contents/MacOS/Emacs
 fi
 
-if [ -n "$IS_OSX" -o -n "$IS_VTERM" ]; then
+if [ -n "$IS_OSX" ] || [ -n "$IS_VTERM" ]; then
     # This may need tweaking. What about xterm-256 et al?
     export CLICOLOR=1
 else
     alias ls="/bin/ls --color=auto"
 fi
 
-if [ -n "`command -v htop`" ]; then
+if [ -n "$(command -v htop)" ]; then
 	alias top="htop"
 fi
 
-if [ -z "`command -v python`" -a -n "`command -v python3`" ]; then
+if [ -z "$(command -v python)" ] && [ -n "$(command -v python3)" ]; then
 	alias python="python3"
 fi
 
@@ -46,7 +46,7 @@ alias rm="/bin/rm -i"
 
 # my functions
 if [ -f "$HOME"/sh/pw_functions ]; then
-    . $HOME/sh/pw_functions
+    . "$HOME"/sh/pw_functions
 fi
 
 if [ "$CLICOLOR" -eq "1" ]; then
@@ -54,7 +54,7 @@ if [ "$CLICOLOR" -eq "1" ]; then
 else
     # without colors, do this:
     PS1='\u@\h \W\n\$ '
-
+fi
 
 # Use GUI for ssh-add IF we're on X.
 if [ -n "$DISPLAY" ]; then
@@ -80,8 +80,8 @@ export NVM_DIR="$HOME/.nvm"
 
 alias dcomp="docker-compose"
 
-[[ -x /usr/local/bin/brew ]] && eval $(/usr/local/bin/brew shellenv)
-[[ -x /opt/homebrew/bin/brew ]] && eval $(/opt/homebrew/bin/brew shellenv)
+[[ -x /usr/local/bin/brew ]] && eval "$(/usr/local/bin/brew shellenv)"
+[[ -x /opt/homebrew/bin/brew ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
 
 # Ruby version mgt via Frum https://github.com/TaKO8Ki/frum#bash
