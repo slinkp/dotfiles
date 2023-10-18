@@ -1,7 +1,17 @@
 
 [diff]
-    color = auto
-    colorMoved = default
+    #color = auto
+    #colorMoved = default
+    tool = difftastic
+
+[difftool]
+    prompt = false
+
+[difftool "difftastic"]
+    cmd = difft "$LOCAL" "$REMOTE"
+
+[pager]
+    difftool = true
 
 [user]
 	name = Paul Winkler
@@ -34,10 +44,14 @@
 	br = branch
 	ci = commit
 	co = checkout
-        diff = diff --word-diff
-	di = diff --word-diff
+	diff = diff --word-diff
+	difftastic = difftool
+	di = difftool
+	dt = difftool
 	dif = diff --word-diff
 	difff = diff --word-diff
+	dlog = "!f() { GIT_EXTERNAL_DIFF=difft git log -p --ext-diff; }; f"
+	logtastic = dlog
 	unmerged = !sh -c 'git log $1@{1}..$1@{0} "$@"'
 	ls = log --pretty=format:\"%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]\" --decorate --date=short
 	lsv = "log --pretty=format:\"%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]\" --decorate --date=short --numstat "
@@ -83,12 +97,8 @@
 	path = /Users/paul/.config/dev/gitconfig
 
 
-## Obsoleted by git-delta
-# [pager]
-# 	diff = diff-so-fancy | less --tabs=1,5 -RFX
-# 	show = diff-so-fancy | less --tabs=1,5 -RFX
-
-# git-delta config
+# git-delta config,
+# used when not using difftastic / difftool
 
 [merge]
     conflictstyle = diff3
@@ -98,9 +108,13 @@
 
 [delta]
     navigate = true  # use n and N to move between diff sections
+
+# Credentials for github
+
 [credential "https://github.com"]
 	helper = 
 	helper = !gh auth git-credential
+
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !gh auth git-credential

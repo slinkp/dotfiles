@@ -92,3 +92,4 @@ eval "$(frum init)"
 
 # Used by haskell installer
 [ -f "/Users/paul/.ghcup/env" ] && source "/Users/paul/.ghcup/env" # ghcup-env
+

@@ -26,6 +26,7 @@ if [ -e /Library/Frameworks/Python.framework/Versions/3.6/bin ]; then
    PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
 fi
 
+
 ## Unsetting this as it caused basic commands to hang
 ## when combined with shellcheck stuff added to .bashrc by dev
 # BASH_ENV=$HOME/.bashrc
