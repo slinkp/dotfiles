@@ -97,8 +97,9 @@ if [ -n "$IS_MACOS" ]; then
 
     echo "Installing macos packages..."
     brew install colordiff the_silver_searcher ripgrep tree \
-         pyenv diff-so-fancy pygments mplayer mp3info \
+         pyenv pygments mplayer mp3info \
          gh git-delta \
+         difftastic \
          pandoc grip \
          shellcheck \
          frum libyaml \  # For Ruby management
@@ -159,8 +160,9 @@ if [ -n "$IS_LINUX" ] && [ -n "$APT" ]; then
                git \
                emacs28-nativecomp \
                pandoc \
-               shellcheck
-	       fzf
+               shellcheck \
+               fzf \
+               difftastic  # TODO unsure if there's an ubuntu package for this
 
     echo "More apt cleanup..."
     sudo apt -y --fix-broken install
@@ -174,14 +176,6 @@ if [ -n "$IS_LINUX" ] && [ -n "$APT" ]; then
     curl -L https://github.com/dandavison/delta/releases/download/0.12.1/git-delta_0.12.1_amd64.deb > git-delta.deb && \
         sudo dpkg -i git-delta.deb
     cd ~ || exit 1
-
-    echo "Installing diff-so-fancy for my git config..."
-    cd ~/src || exit 1
-    rm -rf diff-so-fancy
-    git clone https://github.com/so-fancy/diff-so-fancy.git
-    sudo mv -f diff-so-fancy/diff-so-fancy /usr/local/bin/
-    sudo cp -r diff-so-fancy/lib /usr/local/bin
-    cd - || exit 1
 
     echo
     echo "Bootstrapping emacs packages"
