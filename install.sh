@@ -105,9 +105,9 @@ if [ -n "$IS_MACOS" ]; then
          frum libyaml \  # For Ruby management
          fzf
 
-    # Emacs for m1
+    # Emacs for mac
     brew tap d12frosted/emacs-plus
-    brew install emacs-plus@28 --with-native-comp --with-modern-papirus-icon
+    brew install emacs-plus@29 --with-native-comp --with-modern-papirus-icon
 
     # Launching via spotlight requires copying the .app directory, not symlinking...
     # which means we have to do this every time :(
