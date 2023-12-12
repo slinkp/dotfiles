@@ -103,7 +103,8 @@ if [ -n "$IS_MACOS" ]; then
          pandoc grip \
          shellcheck \
          frum libyaml \  # For Ruby management
-         fzf
+         fzf \
+         direnv
 
     # Emacs for mac
     brew tap d12frosted/emacs-plus
@@ -162,6 +163,7 @@ if [ -n "$IS_LINUX" ] && [ -n "$APT" ]; then
                pandoc \
                shellcheck \
                fzf \
+               direnv \
                difftastic  # TODO unsure if there's an ubuntu package for this
 
     echo "More apt cleanup..."

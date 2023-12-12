@@ -167,7 +167,7 @@ export HISTFILESIZE=3000
 # Better handling history from multiple terminals
 # as per https://twitter.com/AreTillery/status/1262202552373960705
 # Set an environment variable to force history saving with each prompt:
-PROMPT_COMMAND='history -a'
+PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 # You probably want to set your history to append instead of overwrite too
 shopt -s histappend
 

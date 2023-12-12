@@ -93,3 +93,5 @@ eval "$(frum init)"
 # Used by haskell installer
 [ -f "/Users/paul/.ghcup/env" ] && source "/Users/paul/.ghcup/env" # ghcup-env
 
+# Direnv
+[[ -x /usr/local/bin/direnv ]] && eval "$(/usr/local/bin/direnv hook bash)"
