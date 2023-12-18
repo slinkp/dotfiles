@@ -4,9 +4,6 @@
 ;; See also https://github.com/radian-software/straight.el#faq
 ;; ========================================================================
 
-;; It seems we need to remove build-in python.el early.
-(when (featurep 'python) (unload-feature 'python t))
-
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -31,6 +28,10 @@
 
 (straight-use-package 'use-package)
 
+;; Make use-package use straight under the hood by default.
+;; This makes it easier for me to reuse use-package recipes from the web that use eg the :command keyword.
+(setq straight-use-package-by-default 't)
+
 (straight-use-package 'rg)
 (straight-use-package 'projectile-ripgrep)
 (straight-use-package 'helm)
@@ -46,8 +47,6 @@
 (straight-use-package 'sphinx-doc)
 (straight-use-package 'highlight-indentation)
 (straight-use-package 's)
-(straight-use-package 'pyvenv)
-(straight-use-package 'python-mode)
 (straight-use-package 'php-mode)
 (straight-use-package 'multiple-cursors)
 (straight-use-package 'markdown-preview-mode)
@@ -68,7 +67,6 @@
 (straight-use-package 'lua-mode)
 (straight-use-package 'graphql-mode)
 (straight-use-package 'protobuf-mode)
-; (straight-use-package 'shadowenv)
 (straight-use-package 'solaire-mode)
 (straight-use-package 'vscode-dark-plus-theme)
 (straight-use-package 'gdscript-mode)
@@ -76,11 +74,15 @@
 (straight-use-package 'haskell-mode)
 (straight-use-package 'string-inflection)
 (straight-use-package 'csv-mode)
+(straight-use-package 'envrc) ;; This supports 'direnv' shell command for buffer-local environment vars.
+
+;; LSP for python at least
+(straight-use-package 'lsp-mode)
+(use-package lsp-ui
+  :commands lsp-ui-mode
+  :straight t)
 
 ;; (eval-when-compile
 ;;   ;; Following line is not needed if use-package.el is in ~/.emacs.d
 ;;   ;; (add-to-list 'load-path "<path where use-package is installed>")
 ;;   (require 'use-package))
-
-;; More stuff to make python-mode use python-mode.el instead of python.el
-(autoload 'python-mode "python-mode" "Python Mode." t)
