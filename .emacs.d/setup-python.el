@@ -2,8 +2,28 @@
 ;; PYTHON part 2 - main config
 ;; ========================================================================
 
-;; Per https://gitlab.com/python-mode-devs/python-mode set this nil??
-(setq py-load-pymacs-p nil)
+;; LSP AUTO-MAGIC TODO:
+;; 1. Get direnv working manually in shell:
+;;    ... yep "source bin/activate" in an .envrc works
+;; 1b. OPTIONAL Get direnv working in shell with my activator
+;;    ... possibly by adding something to ~/.config/direnv/direnvrc??
+;;        See https://direnv.net/man/direnv-stdlib.1.html
+;;    ... Also may require at least a stub .envrc in each project to trigger it, so, meh
+;;    So, no, skip it
+;; DONE
+;;
+;; 2. Get direnv working inside emacs as per https://github.com/purcell/envrc
+;; ... this should make it correctly buffer-local??
+;; DONE
+;;
+;; 3. Switch from python-mode.el to python.el, at least for now.
+;; DONE
+;; 4. Disable all the various emacs virtualenv gunk I've tried.
+;; DONE
+;; 5. Confirm virtualenv correctly automatically activated for each python buffer in emacs
+;; DONE
+;; 6. THEN try LSP again.
+;; DONE. WORKS!!
 
 (add-to-list 'auto-mode-alist '("\\.py$" . python-mode))
 (add-to-list 'auto-mode-alist '("\\.vpy$" . python-mode))
@@ -83,7 +103,9 @@
 (add-hook 'python-mode-hook
   (lambda ()
     (require 'sphinx-doc)
-    (sphinx-doc-mode t)))
+    (sphinx-doc-mode t)
+    (diminish 'sphinx-doc-mode)
+    ))
 
 ;; Highlight lines with pdb.set_trace
 ;; from http://pedrokroger.net/2010/07/configuring-emacs-as-a-python-ide-2/
@@ -117,30 +139,6 @@
 ;;  (annotate-pdb)
 )
 
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Virtualenvs for python
-;(require 'virtualenvwrapper)
-; (venv-initialize-interactive-shells) ;; if you want interactive shell support
-; (venv-initialize-eshell) ;; if you want eshell support
-;; note that setting `venv-location` is not necessary if you
-;; use the default location (`~/.virtualenvs`), or if the
-;; the environment variable `WORKON_HOME` points to the right place
-(setq venv-location "/Users/paul/.emacs.d/.python-environments/")
-
-
-
-;; Simpler way to activate as per https://github.com/porterjamesj/virtualenvwrapper.el#automatically-activating-a-virtualenv-when-using-projectile
-;; ... just use a venv or .venv dir in a projectile project root!
-(setq projectile-switch-project-action 'venv-projectile-auto-workon)
-(add-hook 'python-mode-hook 'jedi:setup)
-
-;; These seem to be sensitive to order.
-;; Works ok if I do which-function-mode late enough?
-;; Show current function in status bar.
-;; ... was horribly slow on some .py files before emacs 24.5, seems ok now?
-(add-hook 'python-mode-hook 'which-function-mode)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Python keyboard overrides.
 ;; python-mode.el clobbers slinkp-vi-join, grr.
@@ -155,16 +153,38 @@
 
 (add-hook 'python-mode-hook
   (lambda ()
+    (message "Paul's python emacs hook")
     (define-key python-mode-map (kbd "C-j") 'slinkp-vi-join)
     (define-key python-mode-map (kbd "M-p") 'slinkp-pdb-set-trace) 
-    ;;; DISABLING ROPE BY DEFAULT ... it is choking too much on big stuff.
-    ;;; ... or maybe that was just which-function-mode? Trying without that.
-    ;; (unless ropemacs-was-loaded
-    ;;   (load-pymacs-and-ropemacs))
-    ;; Override rope-goto-definition binding because jedi has a back button!
-    (define-key python-mode-map (kbd "C-c g") 'jedi:goto-definition)
-    (define-key python-mode-map (kbd "C-c C-g") 'jedi:goto-definition-pop-marker)
-    ;; Jedi complete is super annoying when implicit
-    (setq jedi:complete-on-dot nil)
+    ;;; DISABLING ROPE AND JEDI BY DEFAULT ... do I want it anymore?
+    ;; (unless ropemacs-was-loaded (load-pymacs-and-ropemacs))
+    ;; (my-jedi-setup)
+
+    ;; Don't need which-function-mode when using lsp-headerline-breadcrumb-mode
+    ;; (which-function-mode)
+
   )
 )
+
+;; Jedi config
+(defun my-jedi-setup ()
+  (define-key python-mode-map (kbd "C-c g") 'jedi:goto-definition)
+  (define-key python-mode-map (kbd "C-c C-g") 'jedi:goto-definition-pop-marker)
+  ;; Jedi complete is super annoying when implicit
+  (setq jedi:complete-on-dot nil)
+)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; LSP
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(add-hook 'python-mode-hook 'lsp-deferred)
+
+;; Could also try via lsp-pyright (Microsoft's thing)
+;; (use-package lsp-pyright
+;;   :straight t
+;;   :ensure t
+;;   :hook (python-mode . (lambda ()
+;;                          (require 'lsp-pyright)
+;;                          (lsp))))
+
