@@ -95,3 +95,13 @@ eval "$(frum init)"
 
 # Direnv
 [[ -x /usr/local/bin/direnv ]] && eval "$(/usr/local/bin/direnv hook bash)"
+
+# Fix virtualenv PS1 when in direnv, as per direnv Python docs.
+# https://github.com/direnv/direnv/wiki/Python#restoring-the-ps1
+show_virtual_env() {
+  if [[ -n "$VIRTUAL_ENV" && -n "$DIRENV_DIR" ]]; then
+    echo "($(basename $VIRTUAL_ENV))"
+  fi
+}
+export -f show_virtual_env
+

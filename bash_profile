@@ -192,6 +192,11 @@ if [ -f ~/.bash_github ]; then
     . ~/.bash_github
 fi
 
+
 # I like to shove the time in there on its own line before prompt.
-export PS1="[\t]\n$PS1"
+# Also, fix direnv + virtualenv as per bashrc.
+# I do this here instead of .bashrc because bash_github above overrides PS1.
+export PS1='[\t]$(show_virtual_env)\n'"$PS1"
+
+
 export PATH="/usr/local/opt/dart@2.19/bin:$PATH"
