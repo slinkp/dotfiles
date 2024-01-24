@@ -2,43 +2,10 @@
 ;; PYTHON part 2 - main config
 ;; ========================================================================
 
-;; LSP AUTO-MAGIC TODO:
-;; 1. Get direnv working manually in shell:
-;;    ... yep "source bin/activate" in an .envrc works.
-;;    Adding stub .envrc files seems worth it, very handy in shell too!
-;; DONE
-;;;
-; 2. Get direnv working inside emacs as per https://github.com/purcell/envrc
-;; ... this should make it correctly buffer-local.
-;; DONE
-;; 3. Switch from python-mode.el to python.el, at least for now.
-;; DONE
-;; 4. Disable all the various emacs virtualenv gunk I've tried.
-;; DONE
-;; 5. Confirm virtualenv correctly automatically activated for each python buffer in emacs
-;; DONE
-;; 6. THEN try LSP again.
-;; DONE. WORKS!! Have to `pip install python-lsp-server`
-;; 7. Try flake8 w/ LSP
-;; WORKS! have to `pip install flake8`
-;; 8. Try pylsp-mypy
-;; WORKS! Have to `pip install pylsp-mypy`
-;; 9. TODO more cleanup, there's crap here I don't use: pymacs, ropemacs, jedi
-;; DONE
-;; 10. TODO Try going back to python-mode, I miss the indentation support
-;; DONE
-
 (add-to-list 'auto-mode-alist '("\\.py$" . python-mode))
 (add-to-list 'auto-mode-alist '("\\.vpy$" . python-mode))
 (add-to-list 'auto-mode-alist '("\\.cpy$" . python-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
-
-;; TODO - disable flycheck IF pylsp is enabled
-(add-hook 'python-mode-hook
-  (lambda () 
-   (require 'flycheck)
-    (setq flycheck-checker-error-threshold 800)  ;; default 400
-    (flycheck-mode t)))
 
 
 ;; Get dired to consider .pyc and .pyo files to be uninteresting
@@ -128,13 +95,25 @@
     (message "Paul's python emacs hook")
     ;; python-mode.el clobbers slinkp-vi-join, grr.
     (define-key python-mode-map (kbd "C-j") 'slinkp-vi-join)
-    (define-key python-mode-map (kbd "M-p") 'slinkp-pdb-set-trace)))
+    (define-key python-mode-map (kbd "M-p") 'slinkp-pdb-set-trace)
+    ;; TODO: (kbd "TAB") is normally bound to 'py-indent-or-complete'.
+    ;; Can I rebind that to a function that does "indent or complete via LSP if LSP is active"?
+    ))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; LSP
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (add-hook 'python-mode-hook 'lsp-deferred)
+
+;; TODO - UI is not ideal, tooltips could be cleaner, the inline display is weird
+
+;; Backend for formatting
+(setq lsp-pylsp-plugins-black-enabled 't)
+
+;; TODO I don't seem to have completion enabled.
+;; Does that require one of jedi or rope?
+;; https://emacs-lsp.github.io/lsp-mode/page/lsp-pylsp/
 
 ;; Could also try via lsp-pyright (Microsoft's thing)
 ;; (use-package lsp-pyright

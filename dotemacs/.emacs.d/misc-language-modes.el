@@ -265,3 +265,21 @@
 (setq imenu-auto-rescan t)
 ;; ... does not seem to help :-(
 ;; Issue filed & closed here: https://github.com/jrblevin/markdown-mode/issues/765
+
+;; ---------------------------------------------------------------------------
+;; Markdown realtime preview:
+;;
+;; use `M-x markdown-preview-mode` to start.
+;;
+;; It auto-reloads in browser.
+;; config'd via Customize so not much to see here.
+;; Notably we want good support for gfm markdown extensions.
+;; A usable customization for that is eg '(markdown-command "pandoc --from gfm --to html")
+;; as long as pandoc is installed.
+;;
+;; Things we can't customize:
+;; Stylesheet override, the default is unreadably dark.
+;; TODO: support highlights for code block language modes.
+;; Tables are a bit bland too.
+
+(setq markdown-preview-stylesheets (list "http://thomasf.github.io/solarized-css/solarized-light.min.css"))
