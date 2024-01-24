@@ -68,19 +68,20 @@
  '(helm-projectile-git-grep-command "git --no-pager grep -P --no-color -n%c -e %p -- %f")
  '(inhibit-startup-echo-area-message "pw")
  '(jit-lock-stealth-time 0.035)
- '(markdown-command "pandoc --from gfm --to html --standalone")
+ '(markdown-command "pandoc --from gfm --to html")
+ '(markdown-preview-delay-time 1.0)
  '(mode-line-format
    '("%e" mode-line-front-space mode-line-mule-info mode-line-client mode-line-modified mode-line-remote mode-line-frame-identification mode-line-buffer-identification mode-line-position mode-line-misc-info mode-line-modes
      (vc-mode vc-mode)
      mode-line-end-spaces))
  '(protect-buffer-bury-p nil)
- '(py-load-pymacs-p nil t)
+ '(py-load-pymacs-p nil)
  '(py-pdbtrack-do-tracking-p t)
  '(safe-local-variable-values
-   '((test-case-name . buildbot\.test\.test_transfer)
-     (test-case-name . buildbot\.test\.test_vc)
-     (test-case-name . buildbot\.test\.test_steps\,buildbot\.test\.test_properties)
-     (test-case-name . buildbot\.test\.test_run)))
+   '((test-case-name . buildbot.test.test_transfer)
+     (test-case-name . buildbot.test.test_vc)
+     (test-case-name . buildbot.test.test_steps\,buildbot.test.test_properties)
+     (test-case-name . buildbot.test.test_run)))
  '(scroll-bar-mode nil)
  '(show-paren-mode t nil (paren))
  '(show-trailing-whitespace t)
@@ -93,11 +94,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(font-lock-doc-face ((t (:inherit font-lock-string-face))))
+ '(font-lock-function-name-face ((((class color) (background dark)) (:foreground "#B0B0FF"))))
  '(font-lock-reference-face ((((class color) (background light)) (:foreground "Yellow"))) t)
  '(font-lock-string-face ((((class color) (min-colors 88) (background dark)) (:background "#303040" :foreground "#dd8070"))))
  '(font-lock-variable-name-face ((((class color) (background light)) (:foreground "Goldenrod" :background "DarkSlateBlue"))))
- '(font-lock-function-name-face ((((class color) (background dark)) (:foreground "#B0B0FF"))))
- '(which-func ((((class color) (background dark)) (:foreground "#B0B0FF"))))
  '(rainbow-delimiters-depth-1-face ((t (:foreground "#c0bfcf"))))
  '(rainbow-delimiters-depth-3-face ((t (:foreground "#c0c173"))))
  '(rainbow-delimiters-depth-4-face ((t (:foreground "#d79078"))))
@@ -105,7 +105,8 @@
  '(rst-level-1-face ((t (:background "grey85" :foreground "black" :inverse-video t))) t)
  '(rst-level-2-face ((t (:background "grey78" :foreground "black" :inverse-video t))) t)
  '(rst-level-3-face ((t (:background "grey71" :foreground "black" :inverse-video t))) t)
- '(trailing-whitespace ((t (:background "#002232")))))
+ '(trailing-whitespace ((t (:background "#002232"))))
+ '(which-func ((((class color) (background dark)) (:foreground "#B0B0FF")))))
 
 ;; Enable cc*el edit menus as per http://yummymelon.com/devnull/moving-text-elegantly-in-emacs.html
 (easy-menu-add-item (lookup-key global-map [menu-bar edit]) nil
