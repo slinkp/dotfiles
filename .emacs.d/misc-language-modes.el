@@ -19,7 +19,6 @@
 (setq auto-mode-alist (cons '("\\.pt$" . nxml-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.zcml$" . nxml-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.rdf$" . nxml-mode) auto-mode-alist))
-;;(setq auto-mode-alist (cons '("\\.php3$" . html-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.mako$" . html-mode) auto-mode-alist))
 
 (setq auto-mode-alist (cons '("\\.sgml$" . sgml-mode) auto-mode-alist))
@@ -145,24 +144,6 @@
   (add-hook 'go-mode-hook 'my-go-mode-hook))
 
 
-;; ======================================================================
-;; HTML / MULTI-WEB
-;; ======================================================================
-
-;; Multi-web mode, see https://github.com/fgallina/multi-web-mode
-
-(setq mweb-default-major-mode 'html-mode)
- (setq mweb-tags '((php-mode "<\\?php\\|<\\? \\|<\\?=" "\\?>")
-                  ;; (js2-mode "<script +\\(type=\"text/javascript\"\\|language=\"javascript\"\\)[^>]*>" "</script>")
-                  (js-mode "<script +\\(type=\"text/javascript\"\\|language=\"javascript\"\\)[^>]*>" "</script>")
-                  (css-mode "<style +type=\"text/css\"[^>]*>" "</style>")
-;;                   (ruby-mode "<%= " " %>")
-))
-
- (setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
-(multi-web-global-mode 1)
-
-
 ;; ========================================================================
 ;; CSS
 ;; (add-to-list 'auto-mode-alist '("\\.less" . less-css-mode))
@@ -282,4 +263,30 @@
 ;; TODO: support highlights for code block language modes.
 ;; Tables are a bit bland too.
 
-(setq markdown-preview-stylesheets (list "http://thomasf.github.io/solarized-css/solarized-light.min.css"))
+;; This is more readable than the default solarized-dark theme, but i want table borders
+;; (setq markdown-preview-stylesheets (list "http://thomasf.github.io/solarized-css/solarized-light.min.css"))
+
+;; This is closer to github with white background.
+;; Decent, usable, kind of narrow document body.
+;; Problem: links look like plain text.
+(setq markdown-preview-stylesheets
+      (list
+       "https://cdn.jsdelivr.net/gh/pixelbrackets/gfm-stylesheet/dist/gfm.min.css"
+       ;; This site proxies github and changes content-type to text/css
+       "https://raw.githack.com/slinkp/dotemacs/main/.emacs.d/markdown-preview-local-overrides.css"
+       ;; https://raw.githubusercontent.com/slinkp/dotemacs/main/.emacs.d/markdown-preview-local-overrides.css"
+       ))
+
+;; Similar, like github but dark theme.
+;; Problem: links are dark/invisible.
+;; Still narrow doc body.
+;; Article background is black but doc body is white and there's no margin, so text runs right up to edge :(
+;; Code blocks have slightly lighter background so they stand out nice.
+;; (setq markdown-preview-stylesheets (list "https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.0/github-markdown.min.css"))
+
+;; Combined solarized dark and github dark? Works ok, but links are still dark/invisible
+;; (setq markdown-preview-stylesheets
+;;       (list
+;;        "http://thomasf.github.io/solarized-css/solarized-dark.min.css"
+;;        "https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.0/github-markdown.min.css"
+;;        ))
