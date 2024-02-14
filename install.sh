@@ -102,22 +102,32 @@ if [ -n "$IS_MACOS" ]; then
          difftastic \
          pandoc grip \
          shellcheck \
-         frum libyaml \  # For Ruby management
+         frum libyaml \
          fzf \
-         direnv
+         direnv \
+         imagemagick
+
 
     # Emacs for mac
     brew tap d12frosted/emacs-plus
     brew install emacs-plus@29 --with-native-comp --with-modern-papirus-icon
 
-    # Launching via spotlight requires copying the .app directory, not symlinking...
-    # which means we have to do this every time :(
-    EMACSAPPDIR="$(dirname $(dirname $(readlink -f /opt/homebrew/bin/emacs)))/Emacs.app"
-    if [ -d "$EMACSAPPDIR" ]; then
-        echo Copying Emacs.app so we can launch it from spotlight...
-        rm -rf ~/Applications/Emacs.app
-        cp -rf $EMACSAPPDIR ~/Applications/
-    fi
+    ###############################################################################
+    # !! NOTE !!
+    # Launching via spotlight is tricky to do correctly,
+    # since we want emacs to see the PATH set in our login shell,
+    # and by default Emacs.app does not do this.
+    #
+    # Manual Workaround:
+    # Create an Automator application, add a "Run shell script" step,
+    # with this content:
+    #
+    # EMACSDIR="$(dirname $(dirname $(readlink -f /opt/homebrew/bin/emacs)))"
+    # bash --login -c "$EMACSDIR/bin/emacs"
+    #
+    # Then save that as Emacs.app in Applications.
+    # Remove any other Emacs.app in ~/Applications or /Applicatons.
+    ################################################################################
 
     # Don't let play/ff/rew keys launch apple music
     # per https://apple.stackexchange.com/questions/380126/do-not-open-apple-music-when-pressing-a-media-key
