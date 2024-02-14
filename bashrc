@@ -95,6 +95,7 @@ eval "$(frum init)"
 
 # Direnv
 [[ -x /usr/local/bin/direnv ]] && eval "$(/usr/local/bin/direnv hook bash)"
+[[ -x /opt/homebrew/bin/direnv ]] && eval "$(/opt/homebrew/bin/direnv hook bash)"
 
 # Fix virtualenv PS1 when in direnv, as per direnv Python docs.
 # https://github.com/direnv/direnv/wiki/Python#restoring-the-ps1
