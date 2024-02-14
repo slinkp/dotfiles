@@ -13,7 +13,7 @@ fi
 
 # i like my path elements to come first, but not for libs.
 export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python:/usr/local/lib/python/site-packages:$HOME/bin/py
-export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7:/usr/local/lib/python2.7/site-packages
+#export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7:/usr/local/lib/python2.7/site-packages
 if [ -e $HOME/Library/Python/2.7/lib/python/site-packages ]; then
     export PYTHONPATH=$PYTHONPATH:$HOME/Library/Python/2.7/lib/python/site-packages
 fi
@@ -26,6 +26,12 @@ if [ -e /Library/Frameworks/Python.framework/Versions/3.6/bin ]; then
    PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
 fi
 
+for pyversion in 3.11 3.12 3.13 3.14; do
+   if [ -d "/opt/homebrew/opt/python@${pyversion}/libexec/bin" ]; then
+      PATH="/opt/homebrew/opt/python@${pyversion}/libexec/bin:$PATH"
+      break
+   fi
+done
 
 ## Unsetting this as it caused basic commands to hang
 ## when combined with shellcheck stuff added to .bashrc by dev
