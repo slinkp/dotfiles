@@ -17,9 +17,9 @@ if [ "$INSIDE_EMACS" == 'vterm' ]; then
     export IS_VTERM=1
 fi
 
-if [ -f /Applications/Emacs.app/Contents/MacOS/Emacs ]; then
-	alias emacs=/Applications/Emacs.app/Contents/MacOS/Emacs
-fi
+#if [ -f /Applications/Emacs.app/Contents/MacOS/Emacs ]; then
+#	alias emacs=/Applications/Emacs.app/Contents/MacOS/Emacs
+#fi
 
 if [ -n "$IS_OSX" ] || [ -n "$IS_VTERM" ]; then
     # This may need tweaking. What about xterm-256 et al?
