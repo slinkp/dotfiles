@@ -190,15 +190,6 @@ if [ -n "$IS_LINUX" ] && [ -n "$APT" ]; then
     cd ~ || exit 1
 
     echo
-    echo "Bootstrapping emacs packages"
-    # This is a hack that just saves some time on initial emacs startup.
-    # If we skip this, it just means that the first time I open emacs,
-    # `straight` will go and fetch & install all my missing emacs packages.
-    yes | emacs --no-init-file --script $DOTFILES/emacs_bootstrap.el
-    echo
-    # May also need to do `M-x jedi:install-server` if still jedi problems?
-    echo "Bootstrapped emacs"
-
     #echo "Tags support for emacs xref completion ..."
     #cd $SRCDIR
     #sudo gem install ripper-tags
@@ -211,3 +202,17 @@ fi
 # FINAL SYSTEM-INDEPENDENT STUFF
 #################################################################
 
+echo "Bootstrapping emacs packages"
+# This is a hack that just saves some time on initial emacs startup.
+# If we skip this, it just means that the first time I open emacs,
+# `straight` will go and fetch & install all my missing emacs packages.
+
+rm -f ~/.emacs.elc  # Occasional glitches due to this being stale?
+
+cd ~/.emacs.d/straight
+rm -rf repos/* build-cache.el build/*
+cd ~
+yes | emacs -nw --no-init-file --script $DOTFILES/emacs_bootstrap.el
+echo
+# May also need to do `M-x jedi:install-server` if still jedi problems?
+echo "Bootstrapped emacs"
