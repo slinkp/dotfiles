@@ -22,36 +22,38 @@ git subtree pull --prefix dotemacs https://github.com/slinkp/dotemacs.git main -
 
 ### Things that need installing first, before install.sh:
 
-- First update to latest (MacOS 14 as of writing)
+- [x] First update to latest (MacOS 14 as of writing)
 
-- Dropbox https://www.dropbox.com/install?
-  - add to login items
-  - replace Documents with symlink to `/Users/paul/Library/CloudStorage/Dropbox/My Mac (Paul’s MacBook Pro)/Documents`
-  - `ln -s /Users/paul/Library/CloudStorage/Dropbox ~/Dropbox`
-  - `ln -s ~/Dropbox/bin ~/bin`
-  - `ln -s ~/Dropbox/morestuff ~/morestuff`
+- [x] Dropbox https://www.dropbox.com/install?
+  TODO update this, things have moved
+  - [x] add to login items
+  - [ ] replace Documents with symlink to `/Users/paul/Library/CloudStorage/Dropbox/My Mac (Paul’s MacBook Pro)/Documents`
+  - [ ] `ln -s /Users/paul/Library/CloudStorage/Dropbox ~/Dropbox`
+  - [ ] `ln -s ~/Dropbox/bin ~/bin`
+  - [ ] `ln -s ~/Dropbox/morestuff ~/morestuff`
 
-- Intel One mono font https://github.com/intel/intel-one-mono/ (OTF format)
-  - Download release OTF format
-  - open FontBook app and drag font file(s) to it
+- [x] Intel One mono font https://github.com/intel/intel-one-mono/ (OTF format)
+  - [x] Download release OTF format
+  - [x] open FontBook app and drag font file(s) to it
 
-- iterm2 https://iterm2.com/
+- [x] iterm2 https://iterm2.com/
   - To restore my settings:
-  - install Intel One font and Dropbox first
-  - install Dropbox and load stuff first
+  - [x] install Intel One font and Dropbox first
+  - [x] install Dropbox and load stuff first
   - Settings -> General -> Preferences
     - check "Load preferences from a custom folder or URL"
     - browse to /Users/paul/Library/CloudStorage/Dropbox
+     - [ ] TODO fix this after sorting out dropbox upgrade / data move
       - the file should automatically be loaded `com.googlecode.iterm2.plist`
 
-- Homebrew https://brew.sh/
+- [x] Homebrew https://brew.sh/
 
-**Then run the install script**!
+- [x] **Then run the install script**!
 
 ### Other must-haves:
 
 
-- Firefox
+- [x] Firefox
   - Sync via https://accounts.firefox.com/
   - SimpleTabGroups:
     - I haven't found a way to automate this. Backup files are under folders
@@ -59,14 +61,18 @@ git subtree pull --prefix dotemacs https://github.com/slinkp/dotemacs.git main -
       and I can't control that.
     - Need to manually copy latest one(s) of those into eg dropbox and restore from it
 
-- Hammerspoon https://www.hammerspoon.org/
-  - add to login items
+- [x] Hammerspoon https://www.hammerspoon.org/
+  - [x] add to login items
+  - [x] enable accessibility and restart
 
 ### Less essential but I also want:
 
-- Monosnap (via app store)
-  - add to login items
-- Zulip https://zulip.com/apps/mac
+- [x] Monosnap (via app store)
+  - [x] add to login items
+  - [x] give permissions in settings
+- [x] Zulip https://zulip.com/apps/mac
+  - [x] reinstalled native apple build
+
 - [Presonus Universal Control](https://legacy.presonus.com/products/Universal-Control/downloads?_gl=1*1dn4zz7*_ga*MTEyODA4NjU0NC4xNjg5MTk0MDI3*_ga_QW48WZWN0R*MTY5ODk3Njc4OS4yMzQuMS4xNjk4OTc4NTIyLjYwLjAuMA)
 
 - Blackhole (see notes below)
