@@ -4,6 +4,9 @@
     #colorMoved = default
     tool = difftastic
 
+    # Better readability than default `myers`. Like `patience` but better
+    algorithm = histogram
+
 [difftool]
     prompt = false
 
@@ -24,7 +27,8 @@
 	autosetuprebase = always
 
 [push]
-	default = tracking
+    # Push current branch to remote branch of same name
+	default = simple
 	autoSetupRemote = true
 
 [github]
@@ -32,6 +36,14 @@
 
 [color]
 	ui = true
+
+[rebase]
+    autosquash = true  # Enable squashing of --fixup commits
+
+[rerere]
+    # remembers how you resolved merge conflicts during a git rebase and
+    # automatically resolves conflicts for you when it can.
+    enabled = true
 
 [alias]
     all = for-each-ref --format='%(refname:short) <- %(upstream:short)' refs/heads
@@ -101,7 +113,7 @@
 # used when not using difftastic / difftool
 
 [merge]
-    conflictstyle = diff3
+    conflictstyle = zdiff3
 
 [interactive]
     diffFilter = delta --color-only
@@ -118,3 +130,10 @@
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !gh auth git-credential
+
+
+[transfer]
+    # fetch or receive will abort in the case of a malformed object or a link to a nonexistent object.
+    # And other stuff. Rare but can save your bacon apparently?
+    # Via https://jvns.ca/blog/2024/02/16/popular-git-config-options/#fsckobjects-avoid-data-corruption
+    fsckobjects = true
