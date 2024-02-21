@@ -107,6 +107,8 @@ if [ -n "$IS_MACOS" ]; then
          direnv \
          imagemagick
 
+    # Other Mac stuff I don't necessarily want on work linux systems
+    brew install mplayer mp3info lame
 
     # Emacs for mac
     brew tap d12frosted/emacs-plus
