@@ -109,6 +109,7 @@ if [ -n "$IS_MACOS" ]; then
 
     # Other Mac stuff I don't necessarily want on work linux systems
     brew install mplayer mp3info lame
+    brew install graphviz # `dot` command
 
     # Emacs for mac
     brew tap d12frosted/emacs-plus
