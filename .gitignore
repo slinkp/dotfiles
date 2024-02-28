@@ -7,3 +7,6 @@
 tmp/*
 *.elc
 dotemacs/.emacs.d/eln-cache/
+dotemacs/.emacs.d/projects
+dotemacs/.emacs.d/transient/
+dotemacs/.emacs.d/url/
