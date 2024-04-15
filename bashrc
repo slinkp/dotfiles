@@ -97,6 +97,9 @@ eval "$(frum init)"
 [[ -x /usr/local/bin/direnv ]] && eval "$(/usr/local/bin/direnv hook bash)"
 [[ -x /opt/homebrew/bin/direnv ]] && eval "$(/opt/homebrew/bin/direnv hook bash)"
 
+# Python3
+alias py3="python3"
+
 # Fix virtualenv PS1 when in direnv, as per direnv Python docs.
 # https://github.com/direnv/direnv/wiki/Python#restoring-the-ps1
 show_virtual_env() {
