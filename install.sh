@@ -207,6 +207,10 @@ fi
 # FINAL SYSTEM-INDEPENDENT STUFF
 #################################################################
 
+echo "Virtualenv for python 2 if installed"
+sudo which pip2 && sudo pip2 install --upgrade pip
+sudo which pip2 && sudo pip2 install --upgrade virtualenv
+
 echo "Bootstrapping emacs packages"
 # This is a hack that just saves some time on initial emacs startup.
 # If we skip this, it just means that the first time I open emacs,
