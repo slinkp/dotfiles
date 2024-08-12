@@ -105,7 +105,9 @@ if [ -n "$IS_MACOS" ]; then
          frum libyaml \
          fzf \
          direnv \
-         imagemagick
+         imagemagick \
+         wget \
+         rename
 
     # Other Mac stuff I don't necessarily want on work linux systems
     brew install mplayer mp3info lame
