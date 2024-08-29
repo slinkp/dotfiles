@@ -109,3 +109,10 @@ show_virtual_env() {
 }
 export -f show_virtual_env
 
+# Bash completions from homebrew
+test -d /opt/homebrew/etc/bash_completion.d
+if [ $? -ne 0 ]; then
+    for f in /opt/homebrew/etc/bash_completion.d/* ; do
+        source $f
+    done
+fi
