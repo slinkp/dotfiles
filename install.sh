@@ -96,18 +96,27 @@ if [ -n "$IS_MACOS" ]; then
     ln -sf $DOTFILES/slate .slate
 
     echo "Installing macos packages..."
-    brew install colordiff the_silver_searcher ripgrep tree \
-         pyenv pygments mplayer mp3info \
-         gh git-delta \
+    brew install \
+         colordiff \
          difftastic \
-         pandoc grip \
-         shellcheck \
-         frum libyaml \
-         fzf \
          direnv \
+         frum \
+         fzf \
+         gh \
+         git-delta \
+         grip \
          imagemagick \
-         wget \
-         rename
+         libyaml \
+         node.js \
+         pandoc \
+         pyenv \
+         pygments \
+         rename \
+         ripgrep \
+         shellcheck \
+         the_silver_searcher \
+         tree \
+         wget
 
     # Other Mac stuff I don't necessarily want on work linux systems
     brew install mplayer mp3info lame
