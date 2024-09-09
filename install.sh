@@ -228,8 +228,9 @@ echo "Bootstrapping emacs packages"
 rm -f ~/.emacs.elc  # Occasional glitches due to this being stale?
 
 cd ~/.emacs.d/straight
-rm -rf repos/* build-cache.el build/*
+rm -rf repos/* build-cache.el build/* 
 cd ~
+rm -rf ~/.emacs.d/eln-cache/*  # Force native recompile
 yes | emacs -nw --no-init-file --script $DOTFILES/emacs_bootstrap.el
 echo
 # May also need to do `M-x jedi:install-server` if still jedi problems?
