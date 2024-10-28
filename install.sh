@@ -37,9 +37,10 @@ esac
 #################################################################
 
 echo "Installing shell scripts..."
-mkdir -p ~/src || exit 1
-mkdir -p ~/sh || exit 1
-cd ~/src || exit 1
+SRC=~/src
+mkdir -p $SRC || exit 1
+mkdir -p $SRC/sh || exit 1
+cd $SRC || exit 1
 
 if [ -d "sh" ]; then
     cd sh || exit 1
@@ -59,7 +60,20 @@ else
     git clone https://github.com/slinkp/pw-git-scripts.git
 fi
 ln -sf $PWD/pw-git-scripts/git-* ~/sh/
+
+echo "Installing dotemacs..."
+cd $SRC || exit 1
+if [ -d "dotemacs" ]; then
+    cd dotemacs || exit 1
+    git fetch --all --prune
+    cd - || exit 1
+else
+    git clone https://github.com/slinkp/dotemacs.git
+fi
 cd $HOME || exit 1
+ln -sf $SRC/dotemacs/.emacs .
+ln -sf $SRC/dotemacs/.emacs.d .
+
 
 echo "Linking dotfiles..."
 cd $HOME || exit 1
@@ -71,8 +85,6 @@ ln -sf $DOTFILES/git-completion.bash .git-completion.bash
 ln -sf $DOTFILES/gitignore .gitignore
 ln -sf $DOTFILES/guile .guile
 
-ln -sf $DOTFILES/dotemacs/.emacs .
-ln -sf $DOTFILES/dotemacs/.emacs.d .
 
 ln -sf $DOTFILES/vimrc .vimrc
 
