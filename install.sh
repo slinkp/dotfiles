@@ -107,6 +107,9 @@ if [ -n "$IS_MACOS" ]; then
     ln -sf $DOTFILES/slate.js .slate.js
     ln -sf $DOTFILES/slate .slate
 
+    brew update
+    brew upgrade
+
     echo "Installing macos packages..."
     brew install \
          colordiff \
@@ -130,12 +133,19 @@ if [ -n "$IS_MACOS" ]; then
          tree \
          wget
 
+
+
     # Other Mac stuff I don't necessarily want on work linux systems
     brew install mplayer mp3info lame
     brew install graphviz # `dot` command
 
     # Emacs for mac
     brew tap d12frosted/emacs-plus
+
+    # Sometimes emacs with native comp won't build without this
+    brew uninstall libgccjit 2> /dev/null
+    brew install libgccjit
+    brew uninstall emacs-plus@29 2> /dev/null
     brew install emacs-plus@29 --with-native-comp --with-modern-papirus-icon
 
     ###############################################################################
