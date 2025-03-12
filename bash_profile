@@ -179,11 +179,18 @@ export HISTTIMEFORMAT="%F %T>"
 #######################################################################
 # PATH finalization
 
-# I prefer local stuff to override
+# I prefer this to override /bin and /usr/bin
 PATH="/usr/local/bin:${PATH}"
 
-#finally...
-export PATH
+# Misc repos that may have more binaries
+
+test -e "$HOME/src/finance" && export PATH="$HOME/src/finance:$PATH"
+
+# For gnu coreutils (ls, etc) on M1 mac:
+if [ -e "/opt/homebrew/opt/coreutils/libexec/gnubin" ]; then
+    export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:${PATH}"
+    export MANPATH="/opt/homebrew/opt/coreutils/libexec/gnuman:${MANPATH}"
+fi
 
 ######################################################################
 # PROMPT
