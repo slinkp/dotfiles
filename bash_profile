@@ -135,11 +135,6 @@ complete -o default -F _pip_completion pip
 # pip bash completion end
 
 
-# # Amazon EC2 stuff. For the sysop@openplans account,
-# # used by ec2-* commands.
-# export EC2_CERT=~/.ssh/cert-GOQRORCJPKJPP2L7Z7HE6SUHKP2DZXIJ.pem
-# export EC2_PRIVATE_KEY=~/.ssh/pk-GOQRORCJPKJPP2L7Z7HE6SUHKP2DZXIJ.pem
-
 # Other languages for PATH
 
 for foo in $HOME/bin $HOME/bin/py $HOME/bin/perl $HOME/sh $HOME/bin/ruby; do
@@ -204,5 +199,3 @@ fi
 # I do this here instead of .bashrc because bash_github above overrides PS1.
 export PS1='[\t]$(show_virtual_env)\n'"$PS1"
 
-
-export PATH="/usr/local/opt/dart@2.19/bin:$PATH"
