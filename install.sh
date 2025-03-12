@@ -131,12 +131,14 @@ if [ -n "$IS_MACOS" ]; then
          shellcheck \
          the_silver_searcher \
          tree \
-         wget
+         wget \
+         git-lfs \
+         coreutils
 
 
 
     # Other Mac stuff I don't necessarily want on work linux systems
-    brew install mplayer mp3info lame
+    brew install mplayer mp3info lame ffmpeg
     brew install graphviz # `dot` command
 
     # Emacs for mac
@@ -205,7 +207,8 @@ if [ -n "$IS_LINUX" ] && [ -n "$APT" ]; then
                python3-matplotlib python3-pip python3-virtualenv python3-pygments \
                ncal imagemagick \
                git \
-               emacs28-nativecomp \
+               git-lfs \
+               emacs29-nativecomp \
                pandoc \
                shellcheck \
                fzf \
