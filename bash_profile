@@ -192,6 +192,12 @@ if [ -e "/opt/homebrew/opt/coreutils/libexec/gnubin" ]; then
     export MANPATH="/opt/homebrew/opt/coreutils/libexec/gnuman:${MANPATH}"
 fi
 
+# Use dircolors if it exists to set LS_COLORS
+which dircolors > /dev/null 2>&1
+if [ $? -eq 0 ]; then
+    eval $(dircolors)
+fi    
+
 ######################################################################
 # PROMPT
 

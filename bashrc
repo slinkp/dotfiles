@@ -24,8 +24,12 @@ fi
 if [ -n "$IS_OSX" ] || [ -n "$IS_VTERM" ]; then
     # This may need tweaking. What about xterm-256 et al?
     export CLICOLOR=1
-else
-    alias ls="/bin/ls --color=auto"
+fi
+
+# Use ls colors if we have a version of ls that supports this option
+ls --color=auto > /dev/null 2>&1
+if [ $? -eq 0 ]; then
+    alias ls="ls --color=auto"
 fi
 
 if [ -n "$(command -v htop)" ]; then
