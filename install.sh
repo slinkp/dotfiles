@@ -104,8 +104,6 @@ if [ -n "$IS_MACOS" ]; then
     mv .hammerspoon .hammerspoon-OLD 2> /dev/null
     ln -sf $DOTFILES/hammerspoon .hammerspoon
     rm -f .hammerspoon/hammerspoon  # annoying ln behavior
-    ln -sf $DOTFILES/slate.js .slate.js
-    ln -sf $DOTFILES/slate .slate
 
     brew update
     brew upgrade
