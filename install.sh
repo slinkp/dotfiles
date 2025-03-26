@@ -131,9 +131,8 @@ if [ -n "$IS_MACOS" ]; then
          tree \
          wget \
          git-lfs \
-         coreutils
-
-
+         coreutils \
+         uv
 
     # Other Mac stuff I don't necessarily want on work linux systems
     brew install mplayer mp3info lame ffmpeg
