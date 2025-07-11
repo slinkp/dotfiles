@@ -120,3 +120,7 @@ if [ $? -ne 0 ]; then
         source $f
     done
 fi
+
+# Tidy viewer is a CSV viewer but I'd never remember that name
+
+alias csv-tidy="tidy-viewer"

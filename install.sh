@@ -132,7 +132,8 @@ if [ -n "$IS_MACOS" ]; then
          wget \
          git-lfs \
          coreutils \
-         uv
+         uv \
+         tidy-viewer
 
     # Other Mac stuff I don't necessarily want on work linux systems
     brew install mplayer mp3info lame ffmpeg
@@ -215,6 +216,12 @@ if [ -n "$IS_LINUX" ] && [ -n "$APT" ]; then
     echo "More apt cleanup..."
     sudo apt -y --fix-broken install
     sudo apt -y autoremove
+
+    # tidy-viewer CSV pretty-printer is not packaged?
+    # See https://github.com/alexhallam/tv?tab=readme-ov-file#debian
+    TV_VERSION=1.5.2
+    wget https://github.com/alexhallam/tv/releases/download/${TV_VERSION}/tidy-viewer_${TV_VERSION}_amd64.deb
+    sudo dpkg -i tidy-viewer_${TV_VERSION}_amd64.deb
 
     # For markdown previews via github api
     sudo pip3 install grip
