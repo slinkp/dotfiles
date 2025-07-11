@@ -136,7 +136,7 @@ if [ -n "$IS_MACOS" ]; then
          tidy-viewer
 
     # Other Mac stuff I don't necessarily want on work linux systems
-    brew install mplayer mp3info lame ffmpeg
+    brew install mplayer mp3info lame ffmpeg sox
     brew install graphviz # `dot` command
 
     # Emacs for mac
