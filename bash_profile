@@ -212,3 +212,6 @@ fi
 # I do this here instead of .bashrc because bash_github above overrides PS1.
 export PS1='[\t]$(show_virtual_env)\n'"$PS1"
 
+
+# uv
+export PATH="/Users/paul/.local/bin:$PATH"

@@ -124,3 +124,6 @@ fi
 # Tidy viewer is a CSV viewer but I'd never remember that name
 
 alias csv-tidy="tidy-viewer"
+
+# uv
+export PATH="/Users/paul/.local/bin:$PATH"
