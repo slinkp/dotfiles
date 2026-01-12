@@ -53,7 +53,7 @@ if [ -f "$HOME"/sh/pw_functions ]; then
     . "$HOME"/sh/pw_functions
 fi
 
-if [ "$CLICOLOR" -eq "1" ]; then
+if [ "$CLICOLOR" == "1" ]; then
     PS1='\n\[\033[01;32m\]\u@\h\[\033[01;34m\] \W\n\$\[\033[00m\] '
 else
     # without colors, do this:
