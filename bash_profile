@@ -171,12 +171,23 @@ if [ -f ~/.bash_github ]; then
     . ~/.bash_github
 fi
 
-
 # I like to shove the time in there on its own line before prompt.
 # Also, fix direnv + virtualenv as per bashrc.
 # I do this here instead of .bashrc because bash_github above overrides PS1.
 export PS1='[\t]$(show_virtual_env)\n'"$PS1"
 
-
+###############################################################3
 # uv
 export PATH="/Users/paul/.local/bin:$PATH"
+
+################################################################
+# tex / basictex / whatever
+#
+if [ -f /usr/libexec/path_helper ]; then
+    eval "$(/usr/libexec/path_helper)"
+fi
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/paul/.lmstudio/bin"
+# End of LM Studio CLI section
+

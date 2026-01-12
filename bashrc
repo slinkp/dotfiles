@@ -127,3 +127,8 @@ alias csv-tidy="tidy-viewer"
 
 # uv
 export PATH="/Users/paul/.local/bin:$PATH"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/paul/.lmstudio/bin"
+# End of LM Studio CLI section
+
