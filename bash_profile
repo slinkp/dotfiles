@@ -55,10 +55,6 @@ fi
 export ARDOURRC=$HOME/.ardourrc
 
 
-# for slrn
-#export NNTPSERVER=news.bellatlantic.net
-
-
 # CVS
 export CVS_RSH=ssh
 export CVSEDITOR=vi
@@ -122,13 +118,6 @@ done
 export GOROOT=/usr/local/go
 PATH=$PATH:$GOROOT/bin
 
-# Fix keyboard & touchpad.  TODO: move that to X configs that does the right thing to the right input.
-# XXX This was for linux on macbook air. Doesn't seem good on macbook pro 12,1.
-#if [ -n "$DISPLAY" ]; then
-#	if [ ! -f /tmp/did_x_post_setup ]; then
-#		(sleep 10 && ~/sh/x_post_setup) &
-#	fi
-#fi
 
 # Iterm2 features per https://iterm2.com/documentation-shell-integration.html
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
