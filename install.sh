@@ -146,7 +146,7 @@ if [ -n "$IS_MACOS" ]; then
     brew uninstall libgccjit 2> /dev/null
     brew install libgccjit
     brew uninstall emacs-plus@29 2> /dev/null
-    brew install emacs-plus@29 --with-native-comp --with-modern-papirus-icon
+    brew install emacs-plus@29 --with-native-comp
 
     ###############################################################################
     # !! NOTE !!
