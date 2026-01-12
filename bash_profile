@@ -115,9 +115,10 @@ for foo in $HOME/bin $HOME/bin/py $HOME/bin/perl $HOME/sh $HOME/bin/ruby; do
 done
 
 
-export GOROOT=/usr/local/go
-PATH=$PATH:$GOROOT/bin
-
+if [ -e /usr/local/go ]; then
+    export GOROOT=/usr/local/go
+    PATH=$PATH:$GOROOT/bin
+fi
 
 # Iterm2 features per https://iterm2.com/documentation-shell-integration.html
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
