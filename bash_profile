@@ -39,20 +39,6 @@ export PYTHON_EGG_CACHE=$HOME/.python-eggs
 
 
 ######################################################################
-# ruby
-
-if [ -e $HOME/.rvm/bin ]; then
-    PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-fi
-
-for RUBY_VERSION in "2.7.0" "2.6.0"; do
-    if [ -e $HOME/.gem/ruby/$RUBY_VERSION/bin ]; then
-        PATH=$PATH:$HOME/.gem/ruby/$RUBY_VERSION/bin # For `gem install --user-install` stuff
-    fi
-done
-
-
-######################################################################
 # Misc
 
 #export EDITOR='/usr/bin/emacs -nw'
