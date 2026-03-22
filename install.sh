@@ -108,6 +108,18 @@ if [ -n "$IS_MACOS" ]; then
     brew update
     brew upgrade
 
+    # Some fonts that are nice to have cross-platform
+    brew install fontconfig
+    brew install --cask font-liberation
+    fc-cache -f -v
+
+    # NOTE imagemagick by default can't seem to find mac fonts;
+    # ignore outdated pages that say to install it with fontconfig
+    # support, that isn't an option anymore.
+    # Instead, have to manually do this :-(
+    # https://notes.unindented.org/notes/note_configure_imagemagick_to_find_all_fonts_on_macos/
+    # And don't curl the script, you'll get html - manually download instead.
+
     echo "Installing macos packages..."
     brew install \
          colordiff \
