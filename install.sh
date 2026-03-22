@@ -148,8 +148,11 @@ if [ -n "$IS_MACOS" ]; then
          tidy-viewer
 
     # Other Mac stuff I don't necessarily want on work linux systems
-    brew install mplayer mp3info lame ffmpeg sox
+    brew install mplayer mp3info lame sox
     brew install graphviz # `dot` command
+    # Some ffmpeg niceties, x265 good for smaller video output. xvid didn't work?
+    brew install libvorbis x265  # xvid
+    brew install ffmpeg
 
     # Emacs for mac
     brew tap d12frosted/emacs-plus
