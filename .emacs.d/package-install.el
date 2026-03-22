@@ -70,7 +70,6 @@
 (straight-use-package 'solaire-mode)
 (straight-use-package 'vscode-dark-plus-theme)
 (straight-use-package 'gdscript-mode)
-(straight-use-package '(chuck-mode :type git :host github :repo "jintwo/chuck-mode" :branch "master"))
 (straight-use-package 'string-inflection)
 (straight-use-package 'csv-mode)
 (straight-use-package 'envrc) ;; This supports 'direnv' shell command for buffer-local environment vars.
@@ -112,9 +111,11 @@
   (define-key copilot-completion-map (kbd "s-<escape>") 'copilot-clear-overlay)
   (define-key copilot-completion-map (kbd "s-<down>") 'copilot-next-completion)
   (define-key copilot-completion-map (kbd "s-<up>") 'copilot-previous-completion)
+  (define-key copilot-completion-map (kbd "C-<down>") 'copilot-next-completion)
   ;; Consider also 'copilot-panel-complete
   )
 
 ;; Copilot bootstrapping
 (copilot-install-server)
+
 
