@@ -91,75 +91,78 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; EGLOT instead of LSP
+;;
+;; If want to try, uncomment this and comment out the lsp-mode stuff.
+;; Seems to basically work.
+;; Completion is via completion-at-tab, so whatever that's bound to,
+;; eg M-TAB
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(use-package eglot
-  :straight t
-  :ensure t
-  :defer t
-  :hook ((python-mode . eglot-ensure)
-         )
-  :config
-  (add-to-list 'eglot-server-programs
-               `(python-mode
-                 . ,(eglot-alternatives '(("pyright-langserver" "--stdio")
-                                          "pylsp"
-                                          "jedi-language-server"
-                                          )))))
+
+;; (use-package eglot
+;;   :ensure nil
+;;   :defer t
+;;   :hook ((python-mode . eglot-ensure)
+;;   :config
+;;   (add-to-list 'eglot-server-programs
+;;                `(python-mode
+;;                  . ,(eglot-alternatives '(("pylsp"
+;;                                           "pyright-langserver" "--stdio")
+;;                                           "jedi-language-server"
+;;                                           )))))
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; LSP
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(add-hook 'python-mode-hook 'lsp-deferred)
 
-;; Eglot completion. Can't find how to use helm
+(with-eval-after-load 'lsp-mode
+  ;; Which-key helps me remember / learn keybindings
+  (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
+  ;; Backend for formatting
+  (setq lsp-pylsp-plugins-black-enabled 't)
+
+  ;; Completion. Invoke via what?
+  ;; (setq lsp-pylsp-plugins-jedi-completion-enabled 't)
+
+  ;; Type checking
+  (setq lsp-pylsp-plugins-mypy-enabled 't)
+  ;;;; Enable this to get mypy updating as you type; by default updates on save
+  ;; (setq lsp-pylsp-plugins-mypy-live-mode 't)
+
+  ;; Rebind xref reference keys
+  ;; (add-hook 'lsp-mode-hook
+  ;;  (lambda ()
+  ;;    (
+  ;;     (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)  ; M-.
+  ;;     (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)  ; M-?
+  ;;     )))
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; LSP UI config
+
+;; Sideline UI
+(setq lsp-ui-sideline-enable 't
+      lsp-ui-sideline-show-diagnostics 't ; show diagnostics messages in sideline, eg type errors.
+      lsp-ui-sideline-show-hover 't ; show hover messages in sideline. Often type info.
+      lsp-ui-sideline-show-code-actions 't ; show code actions in sideline. Example??
+      lsp-ui-sideline-update-mode "point" ; When set to 'line' the information will be updated when
+      ;; user changes current line otherwise the information will be updated when user changes current point.
+      lsp-ui-sideline-delay 0.1 ; seconds to wait before showing sideline
+      )
+
+;; Other UI
+(setq lsp-ui-doc-enable 't ; docstrings on hover.
+      lsp-ui-peek-enable 't ; peek at definition or matches, instead of a big context switch
+      lsp-ui-peek-always-show 't
+      )
 
 
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ;; LSP
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; (add-hook 'python-mode-hook 'lsp-deferred)
-
-;; (with-eval-after-load 'lsp-mode
-;;   ;; Which-key helps me remember / learn keybindings
-;;   (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
-;;   ;; Backend for formatting
-;;   (setq lsp-pylsp-plugins-black-enabled 't)
-;;   ;; Completion. Invoke via alt-tab
-;;   (setq lsp-pylsp-plugins-jedi-completion-enabled 't)
-;;   (setq lsp-pylsp-plugins-mypy-enabled 't)
-;;   ;;;; Enable this to get mypy updating as you type; by default updates on save
-;;   ;; (setq lsp-pylsp-plugins-mypy-live-mode 't)
-
-;;   ;; Rebind xref reference keys
-;;   ;; (add-hook 'lsp-mode-hook
-;;   ;;  (lambda ()
-;;   ;;    (
-;;   ;;     (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)  ; M-.
-;;   ;;     (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)  ; M-?
-;;   ;;     )))
-;;   )
-
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ;; LSP UI config
-
-;; ;; Sideline UI
-;; (setq lsp-ui-sideline-enable 't
-;;       lsp-ui-sideline-show-diagnostics 't ; show diagnostics messages in sideline, eg type errors.
-;;       lsp-ui-sideline-show-hover 't ; show hover messages in sideline. Often type info.
-;;       lsp-ui-sideline-show-code-actions 't ; show code actions in sideline. Example??
-;;       lsp-ui-sideline-update-mode "point" ; When set to 'line' the information will be updated when
-;;       ;; user changes current line otherwise the information will be updated when user changes current point.
-;;       lsp-ui-sideline-delay 0.1 ; seconds to wait before showing sideline
-;;       )
-
-;; ;; Other UI
-;; (setq lsp-ui-doc-enable 't ; docstrings on hover.
-;;       lsp-ui-peek-enable 't ; peek at definition or matches, instead of a big context switch
-;;       lsp-ui-peek-always-show 't
-;;       )
-
-
-;; ;; Could also try via lsp-pyright (Microsoft's thing)
-;; ;; (use-package lsp-pyright
-;; ;;   :straight t
-;; ;;   :ensure t
-;; ;;   :hook (python-mode . (lambda ()
-;; ;;                          (require 'lsp-pyright)
-;; ;;                          (lsp))))
+;; Could also try via lsp-pyright (Microsoft's thing)
+;; (use-package lsp-pyright
+;;   :straight t
+;;   :ensure t
+;;   :hook (python-mode . (lambda ()
+;;                          (require 'lsp-pyright)
+;;                          (lsp))))
