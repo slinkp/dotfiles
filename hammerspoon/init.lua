@@ -22,23 +22,23 @@ local grid = require "hs.grid"
 
 MIN_SIZE = 20
 
-function resizeCurrentWindowByPercent(widthPercent, heightPercent)
-      local win = hs.window.frontmostWindow()
-      local f = win:frame()
-      local screen = win:screen()
-      local sframe = screen:frame()
-      if widthPercent > 0.0 then
-         f.w = math.min(sframe.w, f.w + (widthPercent * sframe.w))
-      elseif widthPercent < 0.0 then
-         f.w = math.max(MIN_SIZE, f.w + (widthPercent * sframe.w))
-      end
-      if heightPercent > 0.0 then
-         f.h = math.min(sframe.h, f.h + (heightPercent * sframe.h))
-      elseif heightPercent < 0.0 then
-         f.h = math.max(MIN_SIZE, f.h + (heightPercent * sframe.h))
-      end
-      win:setFrame(f)
-end
+-- function resizeCurrentWindowByPercent(widthPercent, heightPercent)
+--       local win = hs.window.frontmostWindow()
+--       local f = win:frame()
+--       local screen = win:screen()
+--       local sframe = screen:frame()
+--       if widthPercent > 0.0 then
+--          f.w = math.min(sframe.w, f.w + (widthPercent * sframe.w))
+--       elseif widthPercent < 0.0 then
+--          f.w = math.max(MIN_SIZE, f.w + (widthPercent * sframe.w))
+--       end
+--       if heightPercent > 0.0 then
+--          f.h = math.min(sframe.h, f.h + (heightPercent * sframe.h))
+--       elseif heightPercent < 0.0 then
+--          f.h = math.max(MIN_SIZE, f.h + (heightPercent * sframe.h))
+--       end
+--       win:setFrame(f)
+-- end
 
 
 -- bind right:alt       resize +5% +0
@@ -80,20 +80,21 @@ end)
 ----------------------------------------------------------------------
 -- Ports of stuff from slinkp's ~/.slate.js
 ----------------------------------------------------------------------
-nudgeX = 30
-nudgeY = 24
+-- nudgeX = 30
+-- nudgeY = 24
 -- TODO how to move by that amount
 
 ----------------------------------------------------------------------
--- emacs-everywhere per 
+-- emacs-everywhere per ... I forget where.
+-- But, it either doesn't work or I don't know how to use it
 ----------------------------------------------------------------------
 
-hyper = {"cmd","ctrl"}
-hs.hotkey.bindSpec({hyper, "e"},
-  function ()
-    hs.task.new("/bin/bash", nil, { "-l", "-c", "emacsclient --eval '(emacs-everywhere)'" }):start()
-  end
-)
+-- hyper = {"cmd","ctrl"}
+-- hs.hotkey.bindSpec({hyper, "e"},
+--   function ()
+--     hs.task.new("/bin/bash", nil, { "-l", "-c", "emacsclient --eval '(emacs-everywhere)'" }):start()
+--   end
+-- )
 
 
 ------------------------------------------------------------
