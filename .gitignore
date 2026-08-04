@@ -1,5 +1,6 @@
 *.elc
 *~
+.emacs.d/agent
 .emacs.d/session.*
 .emacs.d/projectile-bookmarks.eld
 .emacs.d/projectile.cache
@@ -31,4 +32,5 @@
 .emacs.d/straight/modified/
 .emacs.d/transient/
 .emacs.d/tramp*
+.emacs.d/projects
 *.zip

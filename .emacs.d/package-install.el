@@ -76,6 +76,7 @@
 (straight-use-package 'yasnippet) ;; used by lsp
 (straight-use-package '(rainbow-csv :type git :host github :repo "emacs-vs/rainbow-csv" :branch "master"))
 (straight-use-package 'dired-quick-sort)
+(straight-use-package 'agent-shell)
 
 (use-package which-key
   :straight t
@@ -122,4 +123,5 @@
 ;; ;; Copilot bootstrapping
 ;; (copilot-install-server)
 
-
+;; Used for invoking Prettier for js et al
+(straight-use-package 'apheleia)
