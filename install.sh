@@ -188,9 +188,12 @@ if [ -n "$IS_MACOS" ]; then
     launchctl disable "gui/$(id -u "${USER}")/com.apple.rcd"
 
     # Ruby
-    eval "$(frum init)"
-    frum install 3.2.2
+    # eval "$(frum init)"
+    # frum install 3.2.2
 
+    # Needed for emacs agent-shell mode with cursor.
+    # TBD whether i want this on other systems
+    npm install agent-shell-acp
     echo "Done with Mac setup"
 fi
 
