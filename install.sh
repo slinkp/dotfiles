@@ -122,6 +122,7 @@ if [ -n "$IS_MACOS" ]; then
 
     echo "Installing macos packages..."
     brew install \
+         python3 \
          colordiff \
          difftastic \
          direnv \
@@ -145,7 +146,8 @@ if [ -n "$IS_MACOS" ]; then
          git-lfs \
          coreutils \
          uv \
-         tidy-viewer
+         tidy-viewer \
+         gitleaks
 
     # Other Mac stuff I don't necessarily want on work linux systems
     brew install mplayer mp3info lame sox
@@ -225,8 +227,12 @@ if [ -n "$IS_LINUX" ] && [ -n "$APT" ]; then
                pandoc \
                shellcheck \
                fzf \
-               direnv \
-               difftastic  # TODO unsure if there's an ubuntu package for this
+               direnv
+
+    # TODO unsure if there's an ubuntu package for these
+    sudo apt-get install -y \
+         difftastic \
+         gitleaks
 
     echo "More apt cleanup..."
     sudo apt -y --fix-broken install
