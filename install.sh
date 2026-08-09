@@ -288,3 +288,13 @@ yes | emacs -nw --no-init-file --script $DOTFILES/emacs_bootstrap.el
 echo
 # May also need to do `M-x jedi:install-server` if still jedi problems?
 echo "Bootstrapped emacs"
+
+echo "Cursor agent skills and config..."
+if [ ! -h ~/.cursor/skills ]; then
+    if [ -e ~/.cursor/skills ]; then
+        echo " Moving existing ~/.cursor/skills to ~/.cursor/skills-ORIG ..."
+        mv ~/.cursor/skills ~/.cursor/skills-ORIG
+    fi
+fi
+echo " Linking cursor skills..."
+ln -sf $PWD/cursor/skills ~/.cursor/skills
