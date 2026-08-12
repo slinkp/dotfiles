@@ -289,6 +289,20 @@ echo
 # May also need to do `M-x jedi:install-server` if still jedi problems?
 echo "Bootstrapped emacs"
 
+echo "opencode config..."
+if [ ! -h ~/.config/opencode ]; then
+    if [ -e ~/.config/opencode ]; then
+        echo " Moving existing ~/.config/opencode to ~/.config/opencode-ORIG ..."
+        mv ~/.config/opencode ~/.config/opencode-ORIG
+    fi
+fi
+mkdir -p ~/.config
+echo " Linking opencode config..."
+ln -sf $DOTFILES/opencode ~/.config/opencode
+cd ~/.config/opencode
+npm install
+cd ~
+
 echo "Cursor agent skills and config..."
 if [ ! -h ~/.cursor/skills ]; then
     if [ -e ~/.cursor/skills ]; then
