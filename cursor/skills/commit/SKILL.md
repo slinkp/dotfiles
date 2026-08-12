@@ -24,8 +24,9 @@ disable-model-invocation: true
 4. Stage only the files (or hunks) for **one** concern.
 5. Write a concise commit message focused on **why** (1–2 sentences).
 6. Add the issue-closing line only when an issue number is explicitly available from the task, branch, PR, or surrounding commit context; otherwise omit it.
-7. Add a valid co-author trailer for the coding agent currently making the change, using its official name and email in `Name <email>` form; do not invent an address or use a placeholder.
-8. Commit; repeat for remaining changes.
+7. Identify the coding agent currently making the change. This is the host program running the agent, not the repository owner, Git author, user, or model name. For an OpenCode session, the agent name is `OpenCode`.
+8. Add a co-author trailer for that agent. For OpenCode, use exactly `Co-authored-by: OpenCode <noreply@opencode.ai>` by default. This is an attribution marker for the user and does not need to map to a GitHub account. Never derive the agent identity from `git config`, commit history, repository ownership, or the user's identity.
+9. Commit; repeat for remaining changes.
 
 ## Commit message
 
@@ -45,7 +46,7 @@ EOF
 
 - Imperative mood: "add", "fix", "remove", not "added" or "fixes"
 - Issue fixes: include `Closes #N` only when an issue number is known; omit the line otherwise.
-- Co-authorship: Git recognizes `Co-authored-by:` only with a real `Name <email>` identity. Use the current agent's documented identity/email, not the model name alone.
+- Co-authorship: Use the current host program's documented identity/email, not the repository user's identity or model name alone. For OpenCode, the documented default is `OpenCode <noreply@opencode.ai>`; GitHub account recognition is not required.
 - `Model:` is optional metadata and is not a substitute for the co-author trailer.
 
 ## Do not commit
