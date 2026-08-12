@@ -5,7 +5,8 @@ echo Secrets...
 if command -v detect-secrets >/dev/null 2>&1; then
   if [ -f .secrets.baseline ]; then
     echo "detect-secrets..."
-    if ! detect-secrets-hook --baseline .secrets.baseline; then
+    if ! detect-secrets-hook --baseline .secrets.baseline \
+         --exclude-files 'dotemacs/\.emacs\.d/straight/versions/.*|\.secrets\.baseline'; then
       status=1
     fi
   else

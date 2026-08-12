@@ -1,0 +1,16 @@
+title = "dotfiles gitleaks config"
+
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Emacs straight version lockfile (git commit SHAs, not secrets)"
+paths = [
+  '''dotemacs/\.emacs\.d/straight/versions/''',
+]
+
+[[allowlists]]
+description = "detect-secrets baseline (hashed fingerprints, not secrets)"
+paths = [
+  '''\.secrets\.baseline$''',
+]
