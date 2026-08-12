@@ -1,5 +1,7 @@
 #!/bin/bash
 
+status=0
+
 # Optional secrets scan (runs only if tools are installed)
 echo Secrets...
 if command -v detect-secrets >/dev/null 2>&1; then
@@ -26,4 +28,6 @@ if command -v gitleaks >/dev/null 2>&1; then
 else
   echo "gitleaks not installed, skipping"
 fi
+
+exit "$status"
 
