@@ -20,12 +20,18 @@ disable-model-invocation: true
 
 1. `git status` and `git diff` — understand what changed.
 2. Group changes by logical concern (one feature, one refactor, docs-only, etc.).
-3. Run `./test` — all tests must pass before any commit.
+3. Run the repo's test suite if any, respecting any local test-related skills - all tests must pass before any commit.
 4. Stage only the files (or hunks) for **one** concern.
 5. Write a concise commit message focused on **why** (1–2 sentences).
 6. Add the issue-closing line only when an issue number is explicitly available from the task, branch, PR, or surrounding commit context; otherwise omit it.
-7. Identify the coding agent currently making the change. This is the host program running the agent, not the repository owner, Git author, user, or model name. For an OpenCode session, the agent name is `OpenCode`.
-8. Add a co-author trailer for that agent. For OpenCode, use exactly `Co-authored-by: OpenCode <noreply@opencode.ai>` by default. This is an attribution marker for the user and does not need to map to a GitHub account. Never derive the agent identity from `git config`, commit history, repository ownership, or the user's identity.
+7. Identify the coding agent currently making the change. This is the host
+   program running the agent, not the repository owner, Git author, user, or
+   model name. For an OpenCode session, the agent name is `OpenCode <noreply@opencode.ai>`.
+   Never derive the agent identity from `git config`,
+   commit history, repository ownership, or the user's identity - it is a
+   property of the currently running agent program only.
+8. Add a co-author trailer for that coding agent. This is an attribution marker for the user's benefit and does not need to
+   map to a GitHub account. 
 9. Commit; repeat for remaining changes.
 
 ## Commit message
