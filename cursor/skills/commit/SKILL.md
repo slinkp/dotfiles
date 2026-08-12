@@ -23,7 +23,9 @@ disable-model-invocation: true
 3. Run `./test` — all tests must pass before any commit.
 4. Stage only the files (or hunks) for **one** concern.
 5. Write a concise commit message focused on **why** (1–2 sentences).
-6. Commit; repeat for remaining changes.
+6. Add the issue-closing line only when an issue number is explicitly available from the task, branch, PR, or surrounding commit context; otherwise omit it.
+7. Add a valid co-author trailer for the coding agent currently making the change, using its official name and email in `Name <email>` form; do not invent an address or use a placeholder.
+8. Commit; repeat for remaining changes.
 
 ## Commit message
 
@@ -33,19 +35,24 @@ Use HEREDOC:
 git commit -m "$(cat <<'EOF'
 Short summary of why.
 
-Model: [Name of current model]
+Closes #N  # Include this line only when an issue number is known.
+
+Co-authored-by: Agent Name <agent-email>
+Model: Current AI model
 EOF
 )"
 ```
 
 - Imperative mood: "add", "fix", "remove", not "added" or "fixes"
-- Issue fixes: include `closes #N` when applicable
+- Issue fixes: include `Closes #N` only when an issue number is known; omit the line otherwise.
+- Co-authorship: Git recognizes `Co-authored-by:` only with a real `Name <email>` identity. Use the current agent's documented identity/email, not the model name alone.
+- `Model:` is optional metadata and is not a substitute for the co-author trailer.
 
 ## Do not commit
 
 - Secrets (`.env`, credentials)
 - Unrelated drive-by changes mixed into a focused commit
-- `requirements.txt.MAYBE` or other scratch/temp files unless explicitly requested
+- Obviously-named scratch/temp files eg `requirements.txt.MAYBE`, `foo.py.OLD` etc unless explicitly requested
 
 ## After all commits
 
