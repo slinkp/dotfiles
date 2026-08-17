@@ -88,12 +88,6 @@ alias dcomp="docker-compose"
 [[ -x /opt/homebrew/bin/brew ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
 
-# Ruby version mgt via Frum https://github.com/TaKO8Ki/frum#bash
-
-eval "$(frum init)"
-# Not sure if I want to make a ~/.ruby_version or what, for now just doing
-# `frum install 3.2.2`
-
 # Used by haskell installer
 [ -f "/Users/paul/.ghcup/env" ] && source "/Users/paul/.ghcup/env" # ghcup-env
 

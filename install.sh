@@ -126,7 +126,6 @@ if [ -n "$IS_MACOS" ]; then
          colordiff \
          difftastic \
          direnv \
-         frum \
          fzf \
          gh \
          git-delta \
@@ -186,10 +185,6 @@ if [ -n "$IS_MACOS" ]; then
     # per https://apple.stackexchange.com/questions/380126/do-not-open-apple-music-when-pressing-a-media-key
     launchctl bootout "gui/$(id -u "${USER}")/com.apple.rcd"
     launchctl disable "gui/$(id -u "${USER}")/com.apple.rcd"
-
-    # Ruby
-    # eval "$(frum init)"
-    # frum install 3.2.2
 
     # Needed for emacs agent-shell mode with cursor.
     # TBD whether i want this on other systems
