@@ -23,4 +23,6 @@ omp/*cache*
 omp/agent/*.db*
 omp/agent/*.lock
 omp/agent/last-changelog-version
+omp/agent/blobs
+omp/puppeteer
 
