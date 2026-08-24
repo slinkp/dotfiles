@@ -6,5 +6,5 @@ composer:
 theme: 
   dark: titanium
 setupVersion: 2
-
 secrets.enabled: true
+hideThinkingBlock: true
