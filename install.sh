@@ -298,12 +298,12 @@ cd ~/.config/opencode
 npm install
 cd ~
 
-echo "Cursor agent skills and config..."
-if [ ! -h ~/.cursor/skills ]; then
-    if [ -e ~/.cursor/skills ]; then
-        echo " Moving existing ~/.cursor/skills to ~/.cursor/skills-ORIG ..."
-        mv ~/.cursor/skills ~/.cursor/skills-ORIG
+echo "OMP agent config..."
+if [ ! -h ~/.omp ]; then
+    if [ -e ~/.omp ]; then
+        echo " Moving existing OMP config to .omp-ORIG ..."
+        mv ~/.omp ~/.omp-ORIG
     fi
 fi
-echo " Linking cursor skills..."
-ln -sf $PWD/cursor/skills ~/.cursor/skills
+echo " Linking OMP config..."
+ln -sf $PWD/omp ~/.omp

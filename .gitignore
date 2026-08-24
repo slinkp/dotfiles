@@ -13,3 +13,14 @@ dotemacs/.emacs.d/url/
 
 dotemacs/.emacs.d/.cache/
 dotemacs/.emacs.d/straight/modified/
+
+omp/agent/cache*
+omp/agent/*sessions*
+omp/logs
+omp/natives
+omp/run
+omp/*cache*
+omp/agent/*.db*
+omp/agent/*.lock
+omp/agent/last-changelog-version
+
