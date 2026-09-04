@@ -1,13 +1,14 @@
-modelRoles: 
+modelRoles:
   default: openrouter/openai/gpt-5.6-luna
 symbolPreset: unicode
-composer: 
+composer:
   shape: box
-theme: 
+theme:
   dark: titanium
 setupVersion: 2
 secrets.enabled: true
 hideThinkingBlock: true
 display:
   hideToolActivity: true
-
+dev:
+  autoqaConsent: granted
