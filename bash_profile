@@ -8,6 +8,12 @@ fi
 
 # User specific environment and startup programs.
 
+# I prefer this to override /bin and /usr/bin...
+# but early, because i think there is stuff in there that MacOS put, not me.
+# Like python2.7
+PATH="/usr/local/bin:${PATH}"
+
+
 ######################################################################
 # python
 
@@ -15,12 +21,9 @@ fi
 export PYTHONPATH=$PYTHONPATH:$HOME/bin/py
 
 
-for pyversion in `seq 30 -1 10`; do
-   if [ -e "/opt/homebrew/opt/python3/libexec/bin" ]; then
-      PATH="/opt/homebrew/opt/python3/libexec/bin:$PATH"
-      break
-   fi
-done
+if [ -e "/opt/homebrew/opt/python3/libexec/bin" ]; then
+    PATH="/opt/homebrew/opt/python3/libexec/bin:$PATH"
+fi
 
 ## Unsetting this as it caused basic commands to hang
 ## when combined with shellcheck stuff added to .bashrc by dev
@@ -143,9 +146,6 @@ export HISTTIMEFORMAT="%F %T>"
 
 #######################################################################
 # PATH finalization
-
-# I prefer this to override /bin and /usr/bin
-PATH="/usr/local/bin:${PATH}"
 
 # Misc repos that may have more binaries
 
