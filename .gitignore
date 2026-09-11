@@ -25,5 +25,9 @@ omp/agent/*.lock
 omp/agent/last-changelog-version
 omp/agent/blobs
 omp/puppeteer
+omp/*.db
+omp/install-id
+omp/plugins/cache
+omp/plugins/node_modules
 
 .vibe
