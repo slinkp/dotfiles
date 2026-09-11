@@ -1,0 +1,7 @@
+# Move app.exit away from Ctrl+D because I rely on standard emacs-style edit keys
+app.exit: Ctrl+Q
+
+# Explicitly map this to one key, because Ctrl+Q by default maps to
+# both Ctrl+Enter and Ctrl+Q; I want to be sure it's preserved on the first.
+app.message.followUp: Ctrl+Enter
+
