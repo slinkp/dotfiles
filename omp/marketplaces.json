@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "marketplaces": [
+    {
+      "name": "kicad-happy",
+      "sourceType": "github",
+      "sourceUri": "aklofas/kicad-happy",
+      "catalogPath": "/Users/paul/.omp/plugins/cache/marketplaces/kicad-happy/marketplace.json",
+      "addedAt": "2026-09-02T17:03:53.675Z",
+      "updatedAt": "2026-09-09T17:22:48.737Z"
+    }
+  ]
+}

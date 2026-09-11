@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "plugins": {
+    "kicad-happy@kicad-happy": [
+      {
+        "scope": "user",
+        "installPath": "/Users/paul/.omp/plugins/cache/plugins/kicad-happy___kicad-happy___2.2.1",
+        "version": "2.2.1",
+        "installedAt": "2026-09-02T17:04:24.007Z",
+        "lastUpdated": "2026-09-02T17:04:24.007Z"
+      }
+    ]
+  }
+}
