@@ -10,6 +10,8 @@ setupVersion: 2
 secrets.enabled: true
 hideThinkingBlock: true
 display:
-  hideToolActivity: true
+  hideToolActivity: false
 dev:
   autoqaConsent: granted
+commands:
+  enableOpencodeUser: true
