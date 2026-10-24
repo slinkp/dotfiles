@@ -3,7 +3,7 @@ name: commit
 description: >-
   Create logically separate, atomic git commits. Use when the user asks to
   commit, split changes into commits, or stage work. Smaller commits, one
-  concern each; never commit with failing tests.
+  concern each; never commit with failing tests
 disable-model-invocation: true
 ---
 
@@ -24,23 +24,27 @@ disable-model-invocation: true
 4. Stage only the files (or hunks) for **one** concern.
 5. Write a concise commit message focused on **why** (1–2 sentences).
 6. Add the issue-closing line only when an issue number is explicitly available from the task, branch, PR, or surrounding commit context; otherwise omit it.
-7. Add this *exact* co-author trailer: `Co-authored-by: OMP <noreply@omp.sh>`
-8. Commit; repeat for remaining changes.
+7. Commit, using the command specified below. Then repeat for remaining changes.
 
-## Commit message
+## Commit command
 
-Use HEREDOC:
+Use this command exactly, filling in the correct data. Replace the value assigned to `CURRENT_AI_MODEL` with the current model name. The heredoc delimiter is intentionally **unquoted** so the model variable expands; do not change it to `<<'EOF'`.
 
 ```bash
-git commit -m "$(cat <<'EOF'
+CURRENT_AI_MODEL="openrouter/openai/gpt-5.6-luna"
+git commit -m "$(cat <<EOF
 Short summary of why.
 
-Closes #N  # Include this line only when an issue number is known.
-
 Co-authored-by: OMP <noreply@omp.sh>
-Model: Current AI model
+Model: ${CURRENT_AI_MODEL}
 EOF
 )"
+```
+
+After committing, verify the trailer with:
+
+```bash
+git show -s --format=%B HEAD
 ```
 
 - Imperative mood: "add", "fix", "remove", not "added" or "fixes"
