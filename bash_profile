@@ -123,8 +123,16 @@ if [ -e /usr/local/go ]; then
     PATH=$PATH:$GOROOT/bin
 fi
 
+
 # Iterm2 features per https://iterm2.com/documentation-shell-integration.html
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
+# Kicad!
+
+KICAD_ROOT_MAC=/Applications/KiCad/KiCad.app/Contents/MacOS
+if [ -e "$KICAD_ROOT_MAC"/kicad-cli ]; then
+    PATH="$PATH:$KICAD_ROOT_MAC"
+fi
 
 
 ######################################################################
