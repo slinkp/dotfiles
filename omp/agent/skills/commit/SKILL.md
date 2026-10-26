@@ -28,10 +28,10 @@ disable-model-invocation: true
 
 ## Commit command
 
-Use this command exactly, filling in the correct data. Replace the value assigned to `CURRENT_AI_MODEL` with the current model name. The heredoc delimiter is intentionally **unquoted** so the model variable expands; do not change it to `<<'EOF'`.
+Use this command exactly, filling in the correct data. Replace the value assigned to `CURRENT_AI_MODEL` with the current model name. The heredoc delimiter is intentionally **unquoted** so the model variable expands; do not change it to `<<'EOF'`. The `export` must be a separate command before the command substitution; an inline assignment on the `git commit` command does not reach the command substitution.
 
 ```bash
-CURRENT_AI_MODEL="openrouter/openai/gpt-5.6-luna"
+export CURRENT_AI_MODEL="openrouter/openai/gpt-5.6-luna"
 git commit -m "$(cat <<EOF
 Short summary of why.
 
