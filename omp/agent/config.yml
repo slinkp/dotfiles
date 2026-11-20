@@ -6,7 +6,7 @@ composer:
   shape: box
 theme:
   dark: titanium
-setupVersion: 2
+setupVersion: 3
 secrets.enabled: true
 hideThinkingBlock: true
 display:
@@ -15,3 +15,5 @@ dev:
   autoqaConsent: granted
 commands:
   enableOpencodeUser: true
+update:
+  auto: false

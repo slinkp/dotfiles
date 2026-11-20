@@ -1,13 +1,13 @@
 ---
-name: commit
+name: commits
 description: >-
-  Create logically separate, atomic git commits. Use when the user asks to
-  commit, split changes into commits, or stage work. Smaller commits, one
-  concern each; never commit with failing tests
+  Create multiple logically separate, atomic git commits. Use when the user asks to
+  commit multiple concerns, split changes into commits, or stage work. Smaller
+  commits, one concern each; never commit with failing tests
 disable-model-invocation: true
 ---
 
-# Commit
+# Commits
 
 ## Principles
 
